@@ -1,28 +1,45 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import InlineLink from "@/components/InlineLink.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-  <h1 class="text-3xl pb-6">Mark Iskarous</h1>
-  <h2 class="text-xl pb-4">
-    <code class="text-neutral-800 whitespace-pre">is a:&#9;</code>Postdoctoral
-    Scholar <br />
-    <code class="text-neutral-800 whitespace-pre">in the:&#9;</code>Sensorimotor
-    Bionics Research Group <br />
-    <code class="text-neutral-800 whitespace-pre">at the:&#9;</code>University
-    of Chicago
-  </h2>
-  <div class="flex">
-    <p>
-      Lorem ipsum odor amet, consectetuer adipiscing elit. Elit praesent
-      malesuada fames augue nascetur facilisis. Purus diam varius convallis, dui
-      placerat in ut hac tellus. Natoque auctor sodales imperdiet laoreet tellus
-      dictumst purus conubia aptent. Libero risus sed amet hendrerit quam
-      cubilia. Sed consectetur nascetur parturient laoreet cras fermentum
-      pulvinar egestas. Molestie vivamus class egestas; mi ridiculus nisi.
+  <div class="mt-10 flex flex-col flex-wrap">
+    <h1 class="pb-4 row-span-1 text-3xl">Mark Iskarous</h1>
+    <div class="w-full pb-2 row-span-3">
+      <img
+        class="rounded-md border border-neutral-900"
+        width="400px"
+        height="400px"
+        src="mark-iskarous.jpeg"
+        alt="Headshot of Mark Iskarous."
+      />
+    </div>
+    <h2 class="text-lg row-span-1 pb-4">
+      <code class="text-neutral-600 whitespace-pre">is a:&#9;</code><InlineLink
+        href="https://www.linkedin.com/in/mark-iskarous/"
+        >Postdoctoral Scholar
+      </InlineLink><br />
+      <code class="text-neutral-600 whitespace-pre">in the:&#9;</code
+      ><InlineLink href="https://voices.uchicago.edu/bionics/"
+        >Sensorimotor Bionics Research Group</InlineLink
+      ><br />
+      <code class="text-neutral-600 whitespace-pre">at the:&#9;</code
+      ><InlineLink href="https://www.uchicago.edu/"
+        >University of Chicago</InlineLink
+      >
+    </h2>
+    <p class="row-span-1">
+      Hey there, lorem ipsum odor amet, consectetuer adipiscing elit. Elit
+      praesent malesuada fames augue nascetur facilisis. Purus diam varius
+      convallis, dui placerat in ut hac tellus. Natoque auctor sodales imperdiet
+      laoreet tellus dictumst purus conubia aptent. Libero risus sed amet
+      hendrerit quam cubilia. Sed consectetur nascetur parturient laoreet cras
+      fermentum pulvinar egestas. Molestie vivamus class egestas; mi ridiculus
+      nisi.
     </p>
   </div>
 </Layout>
