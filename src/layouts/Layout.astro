@@ -1,22 +1,23 @@
 ---
-import NavBar from "@/components/NavBar.astro"
-import '@/styles/globals.css';
+import NavBar from "@/components/NavBar.astro";
+import "@/styles/globals.css";
 ---
+
 <!doctype html>
 <html lang="en" class="m-0 w-full h-full">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Mark Iskarous</title>
-	</head>
-	<body class="m-0 w-full h-full">
-		<div class="px-2 mx-auto max-w-screen-lg">
-			<NavBar/>
-			<!-- <slot /> tags are used by Astro to determine where to inject child content.
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Mark Iskarous</title>
+  </head>
+  <body class="m-0 w-full h-full">
+    <div class="px-2 mx-auto max-w-screen-lg">
+      <NavBar />
+      <!-- <slot /> tags are used by Astro to determine where to inject child content.
 			  See https://docs.astro.build/en/basics/astro-components/#slots-->
-			<slot /> 
-		</div>
-	</body>
+      <slot />
+    </div>
+  </body>
 </html>
