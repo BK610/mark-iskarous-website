@@ -1,0 +1,16 @@
+---
+const { title, description } = Astro.props;
+---
+
+<a class="divide-y divide-neutral-900" href=`/research#${title}`>
+  <div class="p-2">
+    <h3 class="text-xl font-serif font-semibold">{title}</h3>
+    <p>{description}</p>
+  </div>
+  <div class="">
+    <img
+      class="object-cover w-full"
+      src=`https://picsum.photos/seed/${title}/300/200`
+    />
+  </div>
+</a>
