@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/PageHeader.astro";
 import InlineLink from "@/components/InlineLink.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -7,9 +8,7 @@ import InlineLink from "@/components/InlineLink.astro";
 ---
 
 <Layout>
-  <h1 class="mt-10 pb-4 text-3xl font-bold text-center sm:text-left">
-    Mark Iskarous
-  </h1>
+  <PageHeader>Mark Iskarous</PageHeader>
   <div class="flex flex-row flex-wrap sm:space-x-4 basis-1/3 sm:flex-nowrap">
     <div class="m-auto sm:m-0 flex flex-col">
       <div class="w-full pb-2">
@@ -36,7 +35,7 @@ import InlineLink from "@/components/InlineLink.astro";
     </div>
     <div class="m-auto sm:m-0 flex flex-col space-y-2 basis-2/3 grow">
       <h3 class="text-xl font-semibold w-full border-b-2">About</h3>
-      <p class="">
+      <p>
         Hey there, lorem ipsum odor amet, consectetuer adipiscing elit. Elit
         praesent malesuada fames augue nascetur facilisis. Purus diam varius
         convallis, dui placerat in ut hac tellus. Natoque auctor sodales
