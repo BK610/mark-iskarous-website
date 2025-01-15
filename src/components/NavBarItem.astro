@@ -2,7 +2,12 @@
 const { location, title, target } = Astro.props;
 ---
 
-<a class="border-b border-neutral-900" href={location} target={target}>
+<a
+  class=`border border-b-neutral-900 rounded-sm
+  ${Astro.url.pathname == location ? "bg-neutral-100 border-neutral-900 shadow-md" : "border-transparent"}`
+  href={location}
+  target={target}
+>
   <div class="px-3 hover:opacity-70">
     {title}
   </div>
