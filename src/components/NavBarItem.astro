@@ -1,8 +1,8 @@
 ---
-const { location, title } = Astro.props;
+const { location, title, target } = Astro.props;
 ---
 
-<a class="border-b border-neutral-900" href={location}>
+<a class="border-b border-neutral-900" href={location} target={target}>
   <div class="px-3 hover:opacity-70">
     {title}
   </div>
