@@ -1,6 +1,4 @@
 // @ts-check
-/// <reference types="astro/client" />
-/// <reference types="@sanity/astro/module" />
 import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
