@@ -22,6 +22,22 @@
 		{
 			"src": "^\\/admin(?:\\/(.*?))?\\/?$",
 			"dest": "_render"
+		},
+		{
+			"src": "^\\/research\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/sanity\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/teaching\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/$",
+			"dest": "_render"
 		}
 	]
 }
