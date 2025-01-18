@@ -1,5 +1,6 @@
 ---
 import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
 // import InlineLink from "./InlineLink.astro";
 
 const socialMediaLinks = await sanityClient.fetch(`*[_type == "socialLink"] | order(publishedAt desc)`);
@@ -14,7 +15,7 @@ const socialMediaLinks = await sanityClient.fetch(`*[_type == "socialLink"] | or
         alt="Headshot of Mark Iskarous."
       />
     </div>
-    <div class="flex gap-2 mx-auto">{socialMediaLinks.map((socialLink) => (
+    <div class="flex gap-2 mx-auto">{socialMediaLinks.map((socialLink: SanityDocument) => (
       <a class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600" href={socialLink.link} target="_blank">
         <div class="m-auto h-8 w-8 hover:shadow-md">
           <img
