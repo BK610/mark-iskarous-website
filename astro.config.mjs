@@ -7,6 +7,8 @@ import react from "@astrojs/react";
 
 import sanity from "@sanity/astro";
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind({
@@ -19,4 +21,6 @@ export default defineConfig({
     studioBasePath: "/admin",
     apiVersion: "2025-01-16",
   })],
+
+  adapter: vercel(),
 });
