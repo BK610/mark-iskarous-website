@@ -21,6 +21,6 @@ export default defineConfig({
     studioBasePath: "/admin",
     apiVersion: "2025-01-16",
   })],
-
+  output: 'server',
   adapter: vercel(),
 });
