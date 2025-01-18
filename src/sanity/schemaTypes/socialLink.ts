@@ -16,9 +16,9 @@ export const socialLinkType = defineType({
     }),
     defineField({
       name: "favicon",
-      type: "url",
+      type: "string",
       title: "Favicon",
-      description: "The icon to be shown for the social media site. Usually found at <SocialMediaSite.com/favicon.ico>."
+      description: "The URL or filepath for the icon to be shown for the social media site. Usually found at <SocialMediaSite.com/favicon.ico>."
     }),
   ],
 });
