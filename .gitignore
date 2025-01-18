@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # prettier config
 .prettierrc*
+
+# Vercel build
+.vercel
