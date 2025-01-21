@@ -7,7 +7,7 @@ const { title, description } = Astro.props;
 >
   <a
     class="divide-y divide-neutral-900"
-    href=`/research#${title.toLowerCase()}`
+    href={`/research#${title.toLowerCase()}`}
   >
     <div class="p-2">
       <h3 class="text-xl font-serif font-semibold">{title}</h3>
