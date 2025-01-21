@@ -13,15 +13,15 @@ import "@/styles/globals.css";
     <meta name="generator" content={Astro.generator} />
     <title>Mark Iskarous</title>
   </head>
-  <body class="m-0">
+  <body>
     <div class="relative min-h-screen">
-      <div class="px-2 pb-16 mx-auto max-w-screen-xl">
+      <div class="px-2 pb-18 mx-auto max-w-screen-xl">
         <NavBar />
         <!-- <slot /> tags are used by Astro to determine where to inject child content.
           See https://docs.astro.build/en/basics/astro-components/#slots-->
         <slot />
       </div>
-    <Footer/>
-  </div>
+      <Footer />
+    </div>
   </body>
 </html>
