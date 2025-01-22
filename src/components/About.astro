@@ -3,7 +3,9 @@ import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 // import InlineLink from "./InlineLink.astro";
 
-const socialMediaLinks = await sanityClient.fetch(`*[_type == "socialLink"] | order(publishedAt desc)`);
+const socialMediaLinks = await sanityClient.fetch(
+  `*[_type == "socialLink"] | order(publishedAt desc)`
+);
 ---
 
 <div class="flex flex-row flex-wrap sm:gap-x-4 basis-1/3 sm:flex-nowrap">
@@ -15,17 +17,25 @@ const socialMediaLinks = await sanityClient.fetch(`*[_type == "socialLink"] | or
         alt="Headshot of Mark Iskarous."
       />
     </div>
-    <div class="flex gap-2 mx-auto">{socialMediaLinks.map((socialLink: SanityDocument) => (
-      <a class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600" href={socialLink.link} target="_blank">
-        <div class="m-auto h-8 w-8 hover:shadow-md">
-          <img
-            class="object-cover m-auto h-full w-full grayscale"
-            src={socialLink.favicon}
-            alt={"Mark Iskarous' profile on " + socialLink.name}
-          />
-        </div>
-      </a>
-    ))}</div>
+    <div class="flex gap-2 mx-auto">
+      {
+        socialMediaLinks.map((socialLink: SanityDocument) => (
+          <a
+            class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600"
+            href={socialLink.link}
+            target="_blank"
+          >
+            <div class="m-auto h-8 w-8 hover:shadow-md">
+              <img
+                class="object-cover m-auto h-full w-full grayscale"
+                src={socialLink.favicon}
+                alt={"Mark Iskarous' profile on " + socialLink.name}
+              />
+            </div>
+          </a>
+        ))
+      }
+    </div>
     <!-- <p class="text-lg pb-4">
       <code class="text-neutral-600 whitespace-pre">is a:&#9;</code><InlineLink
         href="https://www.linkedin.com/in/mark-iskarous/"
