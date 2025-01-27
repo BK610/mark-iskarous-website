@@ -7,18 +7,26 @@ export const socialLinkType = defineType({
     defineField({
       name: "name",
       type: "string",
-      title: "Name"
+      title: "Name",
     }),
     defineField({
       name: "link",
       type: "url",
-      title: "Link"
+      title: "Link",
     }),
     defineField({
       name: "favicon",
       type: "string",
       title: "Favicon",
-      description: "The URL or filepath for the icon to be shown for the social media site. Usually found at <SocialMediaSite.com/favicon.ico>."
+      description:
+        "The URL or filepath for the icon to be shown for the social media site. Usually found at <SocialMediaSite.com/favicon.ico>.",
+    }),
+    defineField({
+      name: "rank",
+      type: "number",
+      title: "Rank",
+      description:
+        "The order in which the social media links should be displayed on the site. Lower numbers displayed first.",
     }),
   ],
 });
