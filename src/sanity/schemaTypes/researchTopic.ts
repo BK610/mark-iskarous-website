@@ -23,5 +23,10 @@ export const researchTopicType = defineType({
       type: "text",
       description: "A longer description of the research topic. 1 paragraph.",
     }),
+    defineField({
+      title: "Image",
+      name: "image",
+      type: "image",
+    }),
   ],
 });
