@@ -12,9 +12,16 @@ export const homePageType = defineType({
       description: "Title of this Sanity entry. Not displayed on the website.",
     }),
     defineField({
+      name: "headshot",
+      title: "Headshot",
+      type: "image",
+      description: "Your headshot.",
+    }),
+    defineField({
       name: "about",
       title: "About",
-      type: "blockContent",
+      type: "array",
+      of: [{ type: "block" }],
       description: "Copy for the 'About' section.",
     }),
     defineField({
