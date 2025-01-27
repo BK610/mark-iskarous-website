@@ -1,10 +1,14 @@
 ---
+export const prerender = true;
+
+const { aboutContent, headshot } = Astro.props;
+import { PortableText } from "astro-portabletext";
+
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
-// import InlineLink from "./InlineLink.astro";
 
-const socialMediaLinks = await sanityClient.fetch(
-  `*[_type == "socialLink"] | order(publishedAt desc)`
+const socialMediaLinks: Array<SanityDocument> = await sanityClient.fetch(
+  `*[_type == "socialLink"] | order(rank asc)`
 );
 ---
 
@@ -13,75 +17,32 @@ const socialMediaLinks = await sanityClient.fetch(
     <div class="w-full pb-2">
       <img
         class="mx-auto rounded-md shadow-xl object-cover w-72 h-72"
-        src="img/mark-iskarous-no-bg.png"
+        src={headshot}
         alt="Headshot of Mark Iskarous."
       />
     </div>
     <div class="flex gap-2 mx-auto">
       {
-        socialMediaLinks
-          .sort((a: SanityDocument, b: SanityDocument) => {
-            // Sorting by rank, lowest --> highest
-            return a.rank - b.rank;
-          })
-          .map((socialLink: SanityDocument) => (
-            <a
-              class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600"
-              href={socialLink.link}
-              target="_blank"
-            >
-              <div class="m-auto h-8 w-8 hover:shadow-md">
-                <img
-                  class="object-cover m-auto h-full w-full grayscale"
-                  src={socialLink.favicon}
-                  alt={"Mark Iskarous' profile on " + socialLink.name}
-                />
-              </div>
-            </a>
-          ))
+        socialMediaLinks.map((socialLink: SanityDocument) => (
+          <a
+            class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600"
+            href={socialLink.link}
+            target="_blank"
+          >
+            <div class="m-auto h-8 w-8 hover:shadow-md">
+              <img
+                class="object-cover m-auto h-full w-full grayscale"
+                src={socialLink.favicon}
+                alt={"Mark Iskarous' profile on " + socialLink.name}
+              />
+            </div>
+          </a>
+        ))
       }
     </div>
-    <!-- <p class="text-lg pb-4">
-      <code class="text-neutral-600 whitespace-pre">is a:&#9;</code><InlineLink
-        href="https://www.linkedin.com/in/mark-iskarous/"
-        >Postdoctoral Scholar
-      </InlineLink><br />
-      <code class="text-neutral-600 whitespace-pre">in the:&#9;</code
-      ><InlineLink href="https://voices.uchicago.edu/bionics/"
-        >Sensorimotor Bionics Research Group</InlineLink
-      ><br />
-      <code class="text-neutral-600 whitespace-pre">at the:&#9;</code
-      ><InlineLink href="https://www.uchicago.edu/"
-        >University of Chicago</InlineLink
-      >
-    </p> -->
   </div>
   <div class="m-auto sm:m-0 flex flex-col gap-y-2 basis-2/3 grow">
     <h3 class="text-xl font-semibold w-full border-b-2">About</h3>
-    <p>
-      Mark M. Iskarous (S'14-GS'18-M'24) was born in Nashville, TN, USA in 1993.
-      He received the B.S. degree in electrical engineering and computer science
-      from the University of California, Berkeley, CA, USA in 2015, and the
-      Ph.D. degree in biomedical engineering at Johns Hopkins University,
-      Baltimore, MD, USA in the Neuroengineering and Biomedical Instrumentation
-      Laboratory in 2024.
-    </p>
-    <p>
-      From 2015 to 2017, he was a Hardware Development Engineer at Amazon
-      Lab126, Sunnyvale, CA, USA working on consumer electronic devices. He is
-      currently a postdoctoral scholar in the department of Organismal Biology
-      and Anatomy at the University of Chicago, Chicago, IL, USA. His current
-      research interests include sensorimotor brain-computer interfaces,
-      neuroprostheses, neuromorphic models of sensory information, and
-      neuromorphic computing. His work has been published in Proceedings of the
-      IEEE and he has presented at the IEEE EMBS Conference on Neural
-      Engineering.
-    </p>
-    <p>
-      Dr. Iskarous is a member of the Society for Neuroscience. He is a
-      recipient of the NIH Ruth L. Kirschtein Predoctoral Individual National
-      Service Award (F31), the NSF AccelNet NeuroPAC Fellowship, and the
-      MWC/ARCS Foundation 2022-2023 Forster Family Foundation Scholarship.
-    </p>
+    <PortableText value={aboutContent} />
   </div>
 </div>
