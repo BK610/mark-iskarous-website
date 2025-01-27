@@ -1,5 +1,5 @@
 ---
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <div
@@ -16,7 +16,7 @@ const { title, description } = Astro.props;
     <div class="">
       <img
         class="object-cover w-full"
-        src=`https://picsum.photos/seed/${title}/300/200`
+        src={image}
         height="200"
         width="300"
         alt={`Header image for the ${title} research topic`}
