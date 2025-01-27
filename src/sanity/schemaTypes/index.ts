@@ -9,10 +9,10 @@ import { researchTopicType } from "./researchTopic";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
-    authorType,
-    blockContentType,
-    categoryType,
-    postType,
+    // authorType,
+    // blockContentType,
+    // categoryType,
+    // postType,
     socialLinkType,
     researchTopicType,
   ],
