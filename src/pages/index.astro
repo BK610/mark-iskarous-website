@@ -8,11 +8,12 @@ import ResearchIntro from "@/components/ResearchPreviewList.astro";
 
 import { sanityClient } from "sanity:client";
 import imageUrlBuilder from "@sanity/image-url";
+import type { SanityDocument } from "@sanity/client";
 
 const builder = imageUrlBuilder(sanityClient);
 const urlFor = (source: string) => builder.image(source);
 
-const homePageContent = await sanityClient.fetch(
+const homePageContent: SanityDocument = await sanityClient.fetch(
   `*[_type == "homePage"][0]
   {about, headshot, researchSubtitle}`
 );
