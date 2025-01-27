@@ -19,21 +19,26 @@ const socialMediaLinks = await sanityClient.fetch(
     </div>
     <div class="flex gap-2 mx-auto">
       {
-        socialMediaLinks.map((socialLink: SanityDocument) => (
-          <a
-            class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600"
-            href={socialLink.link}
-            target="_blank"
-          >
-            <div class="m-auto h-8 w-8 hover:shadow-md">
-              <img
-                class="object-cover m-auto h-full w-full grayscale"
-                src={socialLink.favicon}
-                alt={"Mark Iskarous' profile on " + socialLink.name}
-              />
-            </div>
-          </a>
-        ))
+        socialMediaLinks
+          .sort((a: SanityDocument, b: SanityDocument) => {
+            // Sorting by rank, lowest --> highest
+            return a.rank - b.rank;
+          })
+          .map((socialLink: SanityDocument) => (
+            <a
+              class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600"
+              href={socialLink.link}
+              target="_blank"
+            >
+              <div class="m-auto h-8 w-8 hover:shadow-md">
+                <img
+                  class="object-cover m-auto h-full w-full grayscale"
+                  src={socialLink.favicon}
+                  alt={"Mark Iskarous' profile on " + socialLink.name}
+                />
+              </div>
+            </a>
+          ))
       }
     </div>
     <!-- <p class="text-lg pb-4">
