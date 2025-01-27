@@ -1,28 +1,38 @@
 ---
 import ResearchPreview from "./ResearchPreview.astro";
+
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
+
+const builder = imageUrlBuilder(sanityClient);
+const urlFor = (source: string) => builder.image(source);
+
+const firstThreeResearchTopics = await sanityClient.fetch(
+  `*[_type == "researchTopic"] |
+  order(_createdAt asc)
+  [0..2]
+  {title, shortDescription, image}`
+);
 ---
 
 <div class="pt-4 sm:pt-14 w-full">
   <h2 class="mb-2 text-2xl font-semibold border-b-2">Research</h2>
   <p class="pb-2">Here's a little intro to my research topics.</p>
   <ul class="list-none grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-2">
-    <li>
-      <ResearchPreview
-        title="First topic"
-        description="A quick little description of my wonderful research topic."
-      />
-    </li>
-    <li>
-      <ResearchPreview
-        title="Second topic"
-        description="A quick little description of my wonderful research topic."
-      />
-    </li>
-    <li>
-      <ResearchPreview
-        title="Third topic"
-        description="A quick little description of my wonderful research topic."
-      />
-    </li>
+    {
+      firstThreeResearchTopics.map(
+        (researchTopic: SanityDocument, key: number) => (
+          <li>
+            <ResearchPreview
+              key={key}
+              title={researchTopic.title}
+              description={researchTopic.shortDescription}
+              image={urlFor(researchTopic.image).height(200).width(300).url()}
+            />
+          </li>
+        )
+      )
+    }
   </ul>
 </div>
