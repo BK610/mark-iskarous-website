@@ -5,10 +5,24 @@ import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/global/PageHeader.astro";
 import About from "@/components/About.astro";
 import ResearchIntro from "@/components/ResearchPreviewList.astro";
+
+import { sanityClient } from "sanity:client";
+import imageUrlBuilder from "@sanity/image-url";
+
+const builder = imageUrlBuilder(sanityClient);
+const urlFor = (source: string) => builder.image(source);
+
+const homePageContent = await sanityClient.fetch(
+  `*[_type == "homePage"][0]
+  {about, headshot, researchSubtitle}`
+);
 ---
 
 <Layout>
   <PageHeader>Mark Iskarous</PageHeader>
-  <About />
-  <ResearchIntro />
+  <About
+    aboutContent={homePageContent.about}
+    headshot={urlFor(homePageContent.headshot).height(250).width(250).url()}
+  />
+  <ResearchIntro subtitle={homePageContent.researchSubtitle} />
 </Layout>
