@@ -18,8 +18,8 @@ export const researchPageType = defineType({
       description: "Title of the hero section.",
     }),
     defineField({
-      name: "heroText",
-      title: "Hero Text",
+      name: "heroContent",
+      title: "Hero Content",
       type: "array",
       of: [{ type: "block" }],
       description: "Description for the hero section.",
