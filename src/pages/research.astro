@@ -5,26 +5,21 @@ import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/global/PageHeader.astro";
 import Hero from "@/components/global/Hero.astro";
 import ResearchList from "@/components/ResearchTopicList.astro";
+
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+
+const researchPageContent: SanityDocument = await sanityClient.fetch(
+  `*[_type == "researchPage"][0]
+  {heroTitle, heroContent}`
+);
 ---
 
 <Layout>
   <PageHeader>Research</PageHeader>
-  <div class="divide-y-2 flex flex-col gap-6">
-    <Hero title="My big statement">
-      <p>
-        Montes dolor hendrerit etiam malesuada quisque at suspendisse. Augue
-        potenti vivamus dictum quis viverra; <b>elementum auctor potenti</b>.
-        Tincidunt massa integer rutrum ad ultrices ridiculus tortor.
-      </p>
-      <p>
-        Himenaeos torquent convallis proin ut quisque class arcu. Montes dolor
-        hendrerit etiam malesuada quisque at suspendisse. <b
-          >Consectetur sit dolor lacus</b
-        > imperdiet sed aliquam tempus. Primis ultricies elit iaculis ultrices
-        <span class="underline">egestas volutpat sagittis</span>. Iaculis odio
-        sociosqu tortor fusce nibh.
-      </p>
-    </Hero>
-    <ResearchList />
-  </div>
+  <Hero
+    title={researchPageContent.heroTitle}
+    content={researchPageContent.heroContent}
+  />
+  <ResearchList />
 </Layout>
