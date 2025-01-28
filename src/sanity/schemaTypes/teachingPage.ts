@@ -16,7 +16,7 @@ export const teachingPageType = defineType({
       title: "Teaching Experience Content",
       type: "array",
       of: [{ type: "block" }],
-      description: "Teaching Experience Content.",
+      description: "Content for the teaching experience section of the site.",
     }),
   ],
 });
