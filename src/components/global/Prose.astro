@@ -1,7 +1,11 @@
+---
+const { class: className } = Astro.props;
+---
+
 <div
-  class="prose prose-neutral max-w-none
+  class=`${className} prose prose-neutral
   prose-h1:font-bold prose-h1:text-xl
-  prose-headings:underline"
+  prose-headings:underline`
 >
   <slot />
 </div>
