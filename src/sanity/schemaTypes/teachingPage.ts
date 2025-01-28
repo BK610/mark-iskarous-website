@@ -12,11 +12,24 @@ export const teachingPageType = defineType({
       description: "Title of this Sanity entry. Not displayed on the website.",
     }),
     defineField({
+      name: "philosophyHeroTitle",
+      title: "Philosophy Hero Title",
+      type: "string",
+      description: "Title of the philosophy hero section.",
+    }),
+    defineField({
+      name: "philosophyHeroContent",
+      title: "Philosophy Hero Content",
+      type: "array",
+      of: [{ type: "block" }],
+      description: "Content for the philosophy hero section.",
+    }),
+    defineField({
       name: "teachingExperienceContent",
       title: "Teaching Experience Content",
       type: "array",
       of: [{ type: "block" }],
-      description: "Content for the teaching experience section of the site.",
+      description: "Content for the teaching experience section.",
     }),
   ],
 });
