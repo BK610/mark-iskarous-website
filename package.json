@@ -17,7 +17,6 @@
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.71.2",
     "@sanity/visual-editing": "^2.12.3",
-    "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "astro": "^5.1.4",
@@ -32,6 +31,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1"
   }
