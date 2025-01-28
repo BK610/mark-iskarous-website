@@ -8,7 +8,7 @@ import imageUrlBuilder from "@sanity/image-url";
 const builder = imageUrlBuilder(sanityClient);
 const urlFor = (source: string) => builder.image(source);
 
-const researchTopics = await sanityClient.fetch(
+const researchTopics: Array<SanityDocument> = await sanityClient.fetch(
   `*[_type == "researchTopic"] |
   order(_createdAt asc)
   {title, shortDescription, longDescription, image}`
