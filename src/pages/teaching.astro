@@ -11,13 +11,16 @@ import type { SanityDocument } from "@sanity/client";
 
 const teachingPageContent: SanityDocument = await sanityClient.fetch(
   `*[_type == "teachingPage"][0]
-  {teachingExperienceContent}`
+  {philosophyHeroTitle, philosophyHeroContent, teachingExperienceContent}`
 );
 ---
 
 <Layout>
   <PageHeader>Teaching</PageHeader>
-  <TeachingPhilosophy />
+  <TeachingPhilosophy
+    title={teachingPageContent.philosophyHeroTitle}
+    content={teachingPageContent.philosophyHeroContent}
+  />
   <TeachingExperience
     teachingExperienceContent={teachingPageContent.teachingExperienceContent}
   />
