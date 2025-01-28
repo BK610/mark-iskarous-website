@@ -1,0 +1,10 @@
+---
+const { title, content } = Astro.props;
+
+import Hero from "@/components/global/Hero.astro";
+---
+
+<section>
+  <Hero title={title} content={content} />
+  <div class="my-10">...List of all my cool teaching achievements...</div>
+</section>
