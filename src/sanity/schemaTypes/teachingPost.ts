@@ -12,6 +12,14 @@ export const teachingPostType = defineType({
       description: "Title of this teaching post.",
     }),
     defineField({
+      name: "slug",
+      type: "slug",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
+    }),
+    defineField({
       name: "tagline",
       title: "Tagline",
       type: "string",
