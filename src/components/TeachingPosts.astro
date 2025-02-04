@@ -1,8 +1,20 @@
 ---
+import TeachingPostPreview from "./TeachingPostPreview.astro";
+import type { SanityDocument } from "@sanity/client";
+import type { Key } from "react";
+
 const { posts } = Astro.props;
 ---
 
-<div class="my-10">
-  <h3 class="font-semibold text-xl">My thoughts on teaching and mentoring</h3>
-  ...List of links to teaching statements / documents...
-</div>
+<section class="my-10">
+  <h3 class="font-semibold text-xl border-b-2 mb-2">
+    Recent thoughts on teaching and mentoring
+  </h3>
+  <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    {
+      posts.map((post: SanityDocument, key: Key) => {
+        return <TeachingPostPreview post={post} key={key} />;
+      })
+    }
+  </div>
+</section>
