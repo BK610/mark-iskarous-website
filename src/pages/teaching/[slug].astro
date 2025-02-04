@@ -1,0 +1,46 @@
+---
+export const prerender = true;
+
+import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/global/PageHeader.astro";
+import Prose from "@/components/global/Prose.astro";
+import { PortableText } from "astro-portabletext";
+
+const { slug } = Astro.params;
+
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+
+// Get content for a specific post page
+const teachingPost: SanityDocument = await sanityClient.fetch(
+  `*[_type == "teachingPost" && slug.current == $slug][0]
+    {title, slug, tagline, teachingPostContent}`,
+  { slug }
+);
+
+// Generate paths for all teaching posts
+export async function getStaticPaths() {
+  const teachingPosts = await sanityClient.fetch(
+    `*[_type == "teachingPost"] {
+    "slug": slug.current
+    }`
+  );
+
+  return teachingPosts.map((post: { slug: string }) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+if (!teachingPost) {
+  return Astro.redirect("/404");
+}
+---
+
+<Layout>
+  <PageHeader> Teaching </PageHeader>
+  <Prose>
+    <h2 class="font-serif">{teachingPost.title}</h2>
+    <p>{teachingPost.tagline}</p>
+    <PortableText value={teachingPost.teachingPostContent} />
+  </Prose>
+</Layout>
