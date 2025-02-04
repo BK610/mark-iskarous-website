@@ -1,0 +1,30 @@
+---
+export const prerender = true;
+
+import type { UseDateTimeFormatOptions } from "sanity";
+
+const {
+  post: { title, createdAt, slug, tagline },
+} = Astro.props;
+
+const dateFormatOptions: UseDateTimeFormatOptions = {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+};
+const formattedCreatedAt: string = new Date(createdAt).toLocaleDateString(
+  "en-US",
+  dateFormatOptions
+);
+---
+
+<a
+  class="border border-neutral-400 bg-neutral-100 rounded-md transition hover:scale-[1.01] shadow-md hover:shadow-xl"
+  href={`/teaching/${slug}`}
+>
+  <div class="p-2">
+    <p class="text-sm text-neutral-600">From {formattedCreatedAt}</p>
+    <h3 class="pt-1 text-xl font-serif font-semibold">{title}</h3>
+    <p class="pt-2">{tagline}</p>
+  </div>
+</a>
