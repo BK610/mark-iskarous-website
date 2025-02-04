@@ -38,9 +38,17 @@ if (!teachingPost) {
 
 <Layout>
   <PageHeader> Teaching </PageHeader>
-  <Prose>
-    <h2 class="font-serif">{teachingPost.title}</h2>
-    <p>{teachingPost.tagline}</p>
-    <PortableText value={teachingPost.teachingPostContent} />
-  </Prose>
+  <div class="mx-auto max-w-2xl w-full">
+    <a class="px-2 py-1 border-b-2 hover:border-b-black" href=".">← Back</a>
+    <p></p>
+    <h2 class="mt-10 text-4xl font-semibold font-serif">
+      {teachingPost.title}
+    </h2>
+    <h3 class="pt-2 pb-6 text-neutral-700 text-xl font-medium">
+      {teachingPost.tagline}
+    </h3>
+    <Prose class="max-w-none">
+      <PortableText value={teachingPost.teachingPostContent} />
+    </Prose>
+  </div>
 </Layout>
