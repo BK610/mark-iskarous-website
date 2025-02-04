@@ -3,16 +3,18 @@ export const prerender = true;
 
 import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/global/PageHeader.astro";
-import TeachingExperience from "@/components/TeachingExperience.astro";
 import TeachingPhilosophy from "@/components/TeachingPhilosophy.astro";
+import TeachingPosts from "@/components/TeachingPosts.astro";
+import TeachingExperience from "@/components/TeachingExperience.astro";
 
 import { sanityClient } from "sanity:client";
-import type { SanityDocument } from "@sanity/client";
 
-const teachingPageContent: SanityDocument = await sanityClient.fetch(
+const teachingPageContent = await sanityClient.fetch(
   `*[_type == "teachingPage"][0]
   {philosophyHeroTitle, philosophyHeroContent, teachingExperienceContent}`
 );
+
+const teachingPosts = await sanityClient.fetch(`*[_type == "teachingPost"]`);
 ---
 
 <Layout>
@@ -21,6 +23,7 @@ const teachingPageContent: SanityDocument = await sanityClient.fetch(
     title={teachingPageContent.philosophyHeroTitle}
     content={teachingPageContent.philosophyHeroContent}
   />
+  <TeachingPosts posts={teachingPosts} />
   <TeachingExperience
     teachingExperienceContent={teachingPageContent.teachingExperienceContent}
   />
