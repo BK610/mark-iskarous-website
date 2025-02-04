@@ -10,13 +10,7 @@ const { slug } = Astro.params;
 
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
-
-// Get content for a specific post page
-const teachingPost: SanityDocument = await sanityClient.fetch(
-  `*[_type == "teachingPost" && slug.current == $slug][0]
-    {title, slug, tagline, teachingPostContent}`,
-  { slug }
-);
+import type { UseDateTimeFormatOptions } from "sanity";
 
 // Generate paths for all teaching posts
 export async function getStaticPaths() {
@@ -31,17 +25,33 @@ export async function getStaticPaths() {
   }));
 }
 
+// Get content for a specific post page
+const teachingPost: SanityDocument = await sanityClient.fetch(
+  `*[_type == "teachingPost" && slug.current == $slug][0]
+    {title, slug, "createdAt": _createdAt, tagline, teachingPostContent}`,
+  { slug }
+);
+
 if (!teachingPost) {
   return Astro.redirect("/404");
 }
+
+const dateFormatOptions: UseDateTimeFormatOptions = {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+};
+const formattedCreatedAt: string = new Date(
+  teachingPost.createdAt
+).toLocaleDateString("en-US", dateFormatOptions);
 ---
 
 <Layout>
   <PageHeader> Teaching </PageHeader>
   <div class="mx-auto max-w-2xl w-full">
     <a class="px-2 py-1 border-b-2 hover:border-b-black" href=".">← Back</a>
-    <p></p>
-    <h2 class="mt-10 text-4xl font-semibold font-serif">
+    <p class="mt-10 text-neutral-600">From {formattedCreatedAt}</p>
+    <h2 class="mt-2 text-4xl font-semibold font-serif">
       {teachingPost.title}
     </h2>
     <h3 class="pt-2 pb-6 text-neutral-700 text-xl font-medium">
