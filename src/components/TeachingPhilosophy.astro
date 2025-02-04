@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 const { title, content } = Astro.props;
 
 import Hero from "@/components/global/Hero.astro";
@@ -6,8 +8,4 @@ import Hero from "@/components/global/Hero.astro";
 
 <section>
   <Hero title={title} content={content} />
-  <div class="my-10">
-    <h3 class="font-semibold text-xl">My thoughts on teaching and mentoring</h3>
-    ...List of links to teaching statements / documents...
-  </div>
 </section>
