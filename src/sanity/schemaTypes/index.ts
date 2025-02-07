@@ -10,6 +10,7 @@ import { homePageType } from "./homePage";
 import { researchPageType } from "./researchPage";
 import { teachingPageType } from "./teachingPage";
 import { teachingPostType } from "./teachingPost";
+import { publicationType } from "./publication";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -23,5 +24,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     researchPageType,
     teachingPageType,
     teachingPostType,
+    publicationType,
   ],
 };
