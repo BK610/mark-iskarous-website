@@ -1,9 +1,13 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/global/PageHeader.astro";
+
+import PublicationList from "@/components/PublicationList.astro";
 ---
 
 <Layout>
   <PageHeader>Publications</PageHeader>
-  All my publications...
+  <PublicationList />
 </Layout>
