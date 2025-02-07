@@ -5,7 +5,10 @@ import TeachingPostPreview from "./TeachingPostPreview.astro";
 import type { SanityDocument } from "@sanity/client";
 import type { Key } from "react";
 
-const { posts } = Astro.props;
+import { sanityClient } from "sanity:client";
+
+const posts = await sanityClient.fetch(`*[_type == "teachingPost"]
+{title, "slug": slug.current, tagline}`);
 ---
 
 <section class="my-10">

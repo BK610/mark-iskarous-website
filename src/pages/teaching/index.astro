@@ -15,7 +15,7 @@ const teachingPageContent = await sanityClient.fetch(
 );
 
 const teachingPosts = await sanityClient.fetch(`*[_type == "teachingPost"]
-{title, "slug": slug.current, "createdAt": _createdAt, tagline}`);
+{title, "slug": slug.current, tagline}`);
 ---
 
 <Layout>
