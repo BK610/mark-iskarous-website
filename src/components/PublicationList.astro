@@ -1,0 +1,31 @@
+---
+import Publication from "./Publication.astro";
+
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import type { Key } from "react";
+
+const publications: Array<SanityDocument> =
+  await sanityClient.fetch(`*[_type == "publication"]
+{title, summary, text, link}`);
+
+console.log(publications);
+---
+
+<section class="w-full">
+  <ol class="list-decimal max-w-3xl mx-auto flex flex-col gap-4">
+    {
+      publications.map((publication: SanityDocument, key: number) => (
+        <li class="mx-4">
+          <Publication
+            title={publication.title}
+            summary={publication.summary}
+            text={publication.text}
+            link={publication.link}
+            key={key}
+          />
+        </li>
+      ))
+    }
+  </ol>
+</section>
