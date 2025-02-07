@@ -6,8 +6,8 @@ const { pathname } = Astro.url;
 ---
 
 <a
-  class=`border border-b-neutral-900 rounded-sm text-center w-fit hover:border-neutral-900
-  ${pathname == location ? "bg-neutral-100 border-neutral-900 shadow-md" : "border-transparent"}`
+  class=`border-b-2 rounded-sm text-center w-fit hover:border-b-neutral-900
+  ${pathname == location && "border-b-neutral-900"}`
   href={location}
   target={target}
 >
