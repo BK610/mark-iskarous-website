@@ -2,6 +2,12 @@
 export const prerender = true;
 
 import NavBarItem from "./NavBarItem.astro";
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+
+const cv: SanityDocument =
+  await sanityClient.fetch(`*[_type == "cv" && title == "DEFAULT"][0]
+{"fileUrl": file.asset->url}`);
 ---
 
 <nav class="py-4 px-4 relative">
@@ -37,7 +43,7 @@ import NavBarItem from "./NavBarItem.astro";
       <NavBarItem location="/research" title="Research" />
       <NavBarItem location="/teaching" title="Teaching" />
       <NavBarItem location="/publications" title="Publications" />
-      <NavBarItem location="/cv.pdf" title="CV" target="_blank" />
+      <NavBarItem location={`${cv.fileUrl}`} title="CV" target="_blank" />
     </div>
   </div>
 </nav>
