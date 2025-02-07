@@ -11,6 +11,7 @@ import { researchPageType } from "./researchPage";
 import { teachingPageType } from "./teachingPage";
 import { teachingPostType } from "./teachingPost";
 import { publicationType } from "./publication";
+import { cvType } from "./cv";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -25,5 +26,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     teachingPageType,
     teachingPostType,
     publicationType,
+    cvType,
   ],
 };
