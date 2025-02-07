@@ -3,11 +3,26 @@ export const prerender = true;
 
 const { location, title, target } = Astro.props;
 const { pathname } = Astro.url;
+
+const pathnameComponents: Array<string> = pathname.split("/");
+var isCurrentPath = false;
+
+if (pathname == "/") {
+  // If on the homepage, only the Home NavBarItem should be highlighted
+  isCurrentPath = location == "/";
+} else {
+  /* Otherwise, highlight if the first pathnameComponent matches the location
+     Note: Uses .includes instead of == because URLs with a trailing slash
+       produce an extra "/" item in the pathnameComponents array, which matches
+       all NavBarItems
+  */
+  isCurrentPath = location.includes(pathnameComponents[1]);
+}
 ---
 
 <a
   class=`border-b-2 rounded-sm text-center w-fit hover:border-b-neutral-900
-  ${pathname == location && "border-b-neutral-900"}`
+  ${isCurrentPath && "border-b-neutral-900"}`
   href={location}
   target={target}
 >
