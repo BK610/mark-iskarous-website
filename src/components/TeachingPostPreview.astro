@@ -1,21 +1,9 @@
 ---
 export const prerender = true;
 
-import type { UseDateTimeFormatOptions } from "sanity";
-
 const {
-  post: { title, createdAt, slug, tagline },
+  post: { title, slug, tagline },
 } = Astro.props;
-
-const dateFormatOptions: UseDateTimeFormatOptions = {
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-};
-const formattedCreatedAt: string = new Date(createdAt).toLocaleDateString(
-  "en-US",
-  dateFormatOptions
-);
 ---
 
 <a

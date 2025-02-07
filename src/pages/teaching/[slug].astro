@@ -28,22 +28,13 @@ export async function getStaticPaths() {
 // Get content for a specific post page
 const teachingPost: SanityDocument = await sanityClient.fetch(
   `*[_type == "teachingPost" && slug.current == $slug][0]
-    {title, slug, "createdAt": _createdAt, tagline, teachingPostContent}`,
+    {title, slug, tagline, teachingPostContent}`,
   { slug }
 );
 
 if (!teachingPost) {
   return Astro.redirect("/404");
 }
-
-const dateFormatOptions: UseDateTimeFormatOptions = {
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-};
-const formattedCreatedAt: string = new Date(
-  teachingPost.createdAt
-).toLocaleDateString("en-US", dateFormatOptions);
 ---
 
 <Layout>
