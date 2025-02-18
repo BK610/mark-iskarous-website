@@ -1,23 +1,26 @@
 ---
 import InlineLink from "./InlineLink.astro";
+
+const thisYear = new Date(Date.now()).toLocaleString(undefined, {
+  year: "numeric",
+});
 ---
 
 <div
   class="mt-auto w-full h-fit min-h-16 flex
-            border-t border-neutral-500 bg-neutral-100"
+            border-t-2 border-neutral-400 bg-blue-100"
 >
   <div
     class="py-2 h-full w-full flex flex-wrap gap-2 justify-center self-center"
   >
-    <p class="p-2 border border-neutral-500 rounded-md">Some footer content!</p>
-    <p class="p-2 border border-neutral-500 rounded-md">
+    <p class="p-2 border-b border-neutral-500">
+      © {thisYear} Mark Iskarous
+    </p>
+    <p class="p-2 border-b border-neutral-500">
       Built by
       <InlineLink href="https://www.baileykane.co/?ref=markiskarous">
         Bailey Kane</InlineLink
       >.
-    </p>
-    <p class="p-2 border border-neutral-500 rounded-md">
-      More footer content!!!
     </p>
   </div>
 </div>
