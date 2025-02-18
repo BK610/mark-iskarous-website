@@ -12,37 +12,40 @@ const socialMediaLinks: Array<SanityDocument> = await sanityClient.fetch(
 );
 ---
 
-<div class="flex flex-row flex-wrap sm:gap-x-4 basis-1/3 sm:flex-nowrap">
-  <div class="w-full sm:w-72 m-auto sm:m-0 flex flex-col">
-    <div class="w-full pb-2">
-      <img
-        class="mx-auto rounded-md shadow-xl object-cover w-72 h-72"
-        src={headshot}
-        alt="Headshot of Mark Iskarous."
-      />
-    </div>
-    <div class="flex gap-2 mx-auto">
-      {
-        socialMediaLinks.map((socialLink: SanityDocument) => (
-          <a
-            class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600"
-            href={socialLink.link}
-            target="_blank"
-          >
-            <div class="m-auto h-8 w-8 hover:shadow-md">
-              <img
-                class="object-cover m-auto h-full w-full grayscale"
-                src={socialLink.favicon}
-                alt={"Mark Iskarous' profile on " + socialLink.name}
-              />
-            </div>
-          </a>
-        ))
-      }
+<div class="flex flex-row flex-wrap sm:gap-x-4 sm:flex-nowrap">
+  <div class="w-full sm:w-72 sm:basis-1/3">
+    <div class="w-fit flex flex-col mx-auto sm:mx-0 mb-6 sm:mb-0">
+      <div class="w-full pb-2">
+        <img
+          class="mx-auto sm:m-0 rounded-md shadow-xl object-cover w-72 h-72"
+          src={headshot}
+          alt="Headshot of Mark Iskarous."
+        />
+      </div>
+      <div class="mx-auto">
+        <div class="flex gap-2">
+          {
+            socialMediaLinks.map((socialLink: SanityDocument) => (
+              <a
+                class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600"
+                href={socialLink.link}
+                target="_blank"
+              >
+                <div class="m-auto h-8 w-8 hover:shadow-md">
+                  <img
+                    class="object-cover m-auto h-full w-full grayscale"
+                    src={socialLink.favicon}
+                    alt={"Mark Iskarous' profile on " + socialLink.name}
+                  />
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
   <div class="m-auto sm:m-0 flex flex-col gap-y-2 basis-2/3 grow">
-    <!-- <h3 class="text-xl font-semibold w-full border-b-2">About</h3> -->
     <PortableText value={aboutContent} />
   </div>
 </div>
