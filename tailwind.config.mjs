@@ -5,6 +5,8 @@ export default {
   theme: {
     fontFamily: {
       sans: ["'Inter Variable'", "sans-serif"],
+      serif: ["'Aleo Variable'", "serif"],
+      mono: ["mono"],
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
