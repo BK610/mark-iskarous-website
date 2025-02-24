@@ -4,34 +4,33 @@ export const prerender = true;
 import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/global/PageHeader.astro";
 import Prose from "@/components/global/Prose.astro";
-import { PortableText } from "astro-portabletext";
-
-const { slug } = Astro.params;
 
 import { sanityClient } from "sanity:client";
-import type { SanityDocument } from "@sanity/client";
+import { PortableText } from "astro-portabletext";
+import type { PortableTextBlock } from "sanity";
+
+interface teachingPost {
+  title: string;
+  slug: {
+    current: string;
+  };
+  tagline: string;
+  teachingPostContent: Array<PortableTextBlock>;
+}
 
 // Generate paths for all teaching posts
 export async function getStaticPaths() {
-  const teachingPosts = await sanityClient.fetch(
-    `*[_type == "teachingPost"] {
-    "slug": slug.current
-    }`
-  );
+  const teachingPosts = await sanityClient.fetch(`*[_type == "teachingPost"]`);
 
-  return teachingPosts.map((post: { slug: string }) => ({
-    params: { slug: post.slug },
+  return teachingPosts.map((post: teachingPost) => ({
+    params: { slug: post.slug.current },
+    props: { post },
   }));
 }
 
-// Get content for a specific post page
-const teachingPost: SanityDocument = await sanityClient.fetch(
-  `*[_type == "teachingPost" && slug.current == $slug][0]
-    {title, slug, tagline, teachingPostContent}`,
-  { slug }
-);
+const { post } = Astro.props as { post: teachingPost };
 
-if (!teachingPost) {
+if (!post) {
   return Astro.redirect("/404");
 }
 ---
@@ -41,13 +40,13 @@ if (!teachingPost) {
   <div class="mx-auto max-w-2xl w-full">
     <a class="px-2 py-1 border-b-2 hover:border-b-black" href=".">← Back</a>
     <h2 class="mt-10 text-4xl font-semibold font-serif">
-      {teachingPost.title}
+      {post.title}
     </h2>
     <h3 class="pt-2 pb-6 text-neutral-700 text-xl font-medium">
-      {teachingPost.tagline}
+      {post.tagline}
     </h3>
     <Prose class="max-w-none">
-      <PortableText value={teachingPost.teachingPostContent} />
+      <PortableText value={post.teachingPostContent} />
     </Prose>
   </div>
 </Layout>
