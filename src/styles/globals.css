@@ -1,5 +1,7 @@
-@import "@fontsource-variable/inter";
-@import "@fontsource-variable/aleo";
+@import "@fontsource-variable/newsreader";
+@import "@fontsource-variable/open-sans";
+@import "@fontsource-variable/montserrat";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

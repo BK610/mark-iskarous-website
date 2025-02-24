@@ -4,9 +4,10 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: {
-      sans: ["'Inter Variable'", "sans-serif"],
-      serif: ["'Aleo Variable'", "serif"],
-      mono: ["mono"],
+      sans: ["'Open Sans Variable'", "sans-serif"],
+      serif: ["'Newsreader Variable'", "serif"],
+      mono: ["courier", "mono"],
+      display: ["'Montserrat Variable'", "'Aleo Variable'"],
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
