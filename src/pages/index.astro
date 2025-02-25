@@ -5,6 +5,7 @@ import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/global/PageHeader.astro";
 import About from "@/components/pageContent/home/About.astro";
 import ResearchIntro from "@/components/pageContent/home/ResearchPreviewList.astro";
+import TeachingPosts from "@/components/pageContent/teaching/TeachingPosts.astro";
 
 import { sanityClient } from "sanity:client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -29,7 +30,8 @@ const homePageContent: SanityDocument = await sanityClient.fetch(
     aboutContent={homePageContent.about}
     headshot={urlFor(homePageContent.headshot).height(250).width(250).url()}
   />
-  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
+  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 pt-4 sm:pt-14">
     <ResearchIntro subtitle={homePageContent.researchSubtitle} />
+    <TeachingPosts />
   </div>
 </Layout>
