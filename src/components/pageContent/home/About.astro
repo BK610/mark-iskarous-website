@@ -12,12 +12,12 @@ const socialMediaLinks: Array<SanityDocument> = await sanityClient.fetch(
 );
 ---
 
-<div class="flex flex-col sm:flex-row gap-4">
+<div class="flex flex-col sm:flex-row gap-4 text-neutral-200">
   <div class="w-full self-center">
     <div class="w-fit flex flex-col mx-auto md:mx-0">
-      <div class="mb-2 w-72 h-72 shadow-xl">
+      <div class="mb-4 w-72 h-72 shadow-xl">
         <img
-          class="rounded-md object-cover w-full h-full"
+          class="rounded-md object-cover w-full h-full bg-blue-200"
           src={headshot}
           alt="Headshot of Mark Iskarous."
         />
@@ -27,11 +27,11 @@ const socialMediaLinks: Array<SanityDocument> = await sanityClient.fetch(
           {
             socialMediaLinks.map((socialLink: SanityDocument) => (
               <a
-                class="flex h-12 w-12 rounded-full bg-neutral-800 hover:bg-neutral-600"
+                class="flex h-12 w-12 rounded-full bg-neutral-400 hover:bg-blue-200"
                 href={socialLink.link}
                 target="_blank"
               >
-                <div class="m-auto h-8 w-8 hover:shadow-md">
+                <div class="m-auto h-8 w-8">
                   <img
                     class="object-cover m-auto h-full w-full grayscale"
                     src={socialLink.favicon}
