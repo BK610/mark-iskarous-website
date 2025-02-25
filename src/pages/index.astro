@@ -9,6 +9,7 @@ import ResearchIntro from "@/components/pageContent/home/ResearchPreviewList.ast
 import { sanityClient } from "sanity:client";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityDocument } from "@sanity/client";
+import { PortableText } from "astro-portabletext";
 
 const builder = imageUrlBuilder(sanityClient);
 const urlFor = (source: string) => builder.image(source);
@@ -20,10 +21,15 @@ const homePageContent: SanityDocument = await sanityClient.fetch(
 ---
 
 <Layout>
-  <PageHeader>Mark Iskarous</PageHeader>
+  <PageHeader slot="header" className={"text-neutral-200"}
+    >Mark Iskarous</PageHeader
+  >
   <About
+    slot="full-width"
     aboutContent={homePageContent.about}
     headshot={urlFor(homePageContent.headshot).height(250).width(250).url()}
   />
-  <ResearchIntro subtitle={homePageContent.researchSubtitle} />
+  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
+    <ResearchIntro subtitle={homePageContent.researchSubtitle} />
+  </div>
 </Layout>
