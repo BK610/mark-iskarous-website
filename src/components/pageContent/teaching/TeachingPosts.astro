@@ -11,11 +11,9 @@ const posts = await sanityClient.fetch(`*[_type == "teachingPost"]
 {title, "slug": slug.current, tagline}`);
 ---
 
-<section class="my-10">
-  <h2 class="font-semibold text-2xl border-b-2 mb-2">
-    Recent thoughts on teaching and mentoring
-  </h2>
-  <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+<section>
+  <h2 class="mb-2 text-2xl font-display font-semibold">Teaching</h2>
+  <div class="flex flex-col gap-2">
     {
       posts.map((post: SanityDocument, key: Key) => {
         return <TeachingPostPreview post={post} key={key} />;
