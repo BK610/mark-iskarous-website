@@ -3,7 +3,7 @@ const { title, description, image } = Astro.props;
 ---
 
 <div
-  class="border border-neutral-900 bg-stone-50 rounded-md group transition shadow-md hover:shadow-xl"
+  class="border-2 border-neutral-400 hover:border-neutral-700 bg-stone-50 group transition shadow-md hover:shadow-xl"
 >
   <a
     class="divide-y divide-neutral-900"
@@ -13,7 +13,7 @@ const { title, description, image } = Astro.props;
       <h3 class="text-xl font-serif font-semibold">{title}</h3>
       <p class="leading-snug">{description}</p>
     </div>
-    <div class="">
+    <!-- <div class="">
       <img
         class="object-cover w-full grayscale group-hover:grayscale-0"
         src={image}
@@ -21,6 +21,6 @@ const { title, description, image } = Astro.props;
         width="300"
         alt={`Header for the ${title} research topic`}
       />
-    </div>
+    </div> -->
   </a>
 </div>
