@@ -15,11 +15,21 @@ import "@/styles/globals.css";
   </head>
   <body class="bg-blue-100 antialiased">
     <div class="flex flex-col min-h-screen">
-      <div class="px-2 mb-6 mx-auto w-full max-w-screen-xl">
-        <NavBar />
+      <div class="mb-6 mx-auto">
         <!-- <slot /> tags are used by Astro to determine where to inject child content.
           See https://docs.astro.build/en/basics/astro-components/#slots-->
-        <slot />
+        <div
+          class="w-fit md:w-screen pt-6 pb-20 bg-gradient-to-br from-neutral-800 to-neutral-700"
+        >
+          <div class="px-2 max-w-screen-xl mx-auto">
+            <NavBar />
+            <slot name="header" />
+            <slot name="full-width" />
+          </div>
+        </div>
+        <div class="px-2 w-full max-w-screen-xl mx-auto">
+          <slot />
+        </div>
       </div>
       <Footer />
     </div>
