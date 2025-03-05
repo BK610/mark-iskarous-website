@@ -1,5 +1,5 @@
 ---
-const { title, abstract, text, link } = Astro.props;
+const { title, tagline, abstract, text, link } = Astro.props;
 
 import { PortableText } from "astro-portabletext";
 ---
@@ -22,6 +22,7 @@ import { PortableText } from "astro-portabletext";
       </a>
     </div>
   </div>
+  <div>{tagline}</div>
   <span class="w-fit mx-auto text-neutral-600"> ⬇︎ </span>
   <div class="collapsible-content collapsed flex flex-col gap-2">
     <h3 class="text-lg font-semibold">Summary</h3>
