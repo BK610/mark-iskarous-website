@@ -1,0 +1,26 @@
+---
+import PublicationList from "@/components/pageContent/publications/PublicationList.astro";
+
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+
+const publicationCategories: Array<SanityDocument> =
+  await sanityClient.fetch(`*[_type == "publicationCategory"]
+{_id, title, description, order}`);
+---
+
+<section class="w-full">
+  <ol class="max-w-3xl mx-auto flex flex-col gap-4">
+    {
+      publicationCategories
+        .sort((a, b) => a.order - b.order)
+        .map((publicationCategory: SanityDocument, key: number) => (
+          <li class="mx-4">
+            <h3 class="text-xl font-semibold">{publicationCategory.title}</h3>
+            <p class="pb-2">{publicationCategory.description}</p>
+            <PublicationList category={publicationCategory._id} key={key} />
+          </li>
+        ))
+    }
+  </ol>
+</section>
