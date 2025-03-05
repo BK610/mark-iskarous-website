@@ -16,7 +16,8 @@ export const publicationType = defineType({
     }),
     defineField({
       name: "abstract",
-      type: "string",
+      type: "array",
+      of: [{ type: "block" }],
       title: "Abstract",
     }),
     defineField({
