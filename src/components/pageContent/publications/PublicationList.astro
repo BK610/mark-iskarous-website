@@ -6,7 +6,7 @@ import type { SanityDocument } from "@sanity/client";
 
 const publications: Array<SanityDocument> =
   await sanityClient.fetch(`*[_type == "publication"]
-{title, summary, text, link}`);
+{title, tagline, abstract, text, link}`);
 ---
 
 <section class="w-full">
@@ -16,7 +16,7 @@ const publications: Array<SanityDocument> =
         <li class="mx-4">
           <Publication
             title={publication.title}
-            summary={publication.summary}
+            abstract={publication.abstract}
             text={publication.text}
             link={publication.link}
             key={key}
