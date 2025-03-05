@@ -36,7 +36,8 @@ export const publicationType = defineType({
       name: "order",
       type: "number",
       title: "Order",
-      description: "Order within a category. Lower numbers appear first.",
+      description:
+        "The order of this publication, within a category. Lower numbers appear first.",
     }),
   ],
 });
