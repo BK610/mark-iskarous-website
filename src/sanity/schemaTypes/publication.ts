@@ -10,9 +10,14 @@ export const publicationType = defineType({
       title: "Title",
     }),
     defineField({
-      name: "summary",
+      name: "tagline",
       type: "string",
-      title: "Summary",
+      title: "Tagline",
+    }),
+    defineField({
+      name: "abstract",
+      type: "string",
+      title: "Abstract",
     }),
     defineField({
       name: "text",
