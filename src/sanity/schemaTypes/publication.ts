@@ -32,5 +32,11 @@ export const publicationType = defineType({
       type: "url",
       title: "Link",
     }),
+    defineField({
+      name: "order",
+      type: "number",
+      title: "Order",
+      description: "Order within a category. Lower numbers appear first.",
+    }),
   ],
 });
