@@ -1,22 +1,39 @@
 ---
 import Publication from "@/components/pageContent/publications/Publication.astro";
 
+const { category } = Astro.props;
+
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 
-const publications: Array<SanityDocument> =
-  await sanityClient.fetch(`*[_type == "publication"]
-{title, tagline, abstract, text, link, order, publicationCategory->}`);
+// Note $category as a param in the query, if provided
+const query = category
+  ? `*[_type == "publicationCategory" && _id == $category][0]
+      {"publications": *[_type == "publication" && references(^._id)]
+        {title, tagline, abstract, text, link, order}
+      }`
+  : `*[_type == "publication"]
+      {title, tagline, abstract, text, link, order}`;
+
+const queryResults: SanityDocument = await sanityClient.fetch(
+  query,
+  // If category is provided, pass it as a param to the GROQ query
+  category ? { category } : {}
+);
+
+// Because the query results are structured differently depending on if a
+// category is provided, publications are either the entire response or just
+// one field
+const publications = category ? queryResults.publications : queryResults;
 ---
 
 <section class="w-full">
   <ol class="max-w-3xl mx-auto flex flex-col gap-4">
     {
       publications
-        .sort((a, b) => a.order - b.order)
+        .sort((a: SanityDocument, b: SanityDocument) => a.order - b.order)
         .map((publication: SanityDocument, key: number) => (
-          <li class="mx-4">
-            {publication.publicationCategory.title}
+          <li>
             <Publication
               title={publication.title}
               abstract={publication.abstract}
