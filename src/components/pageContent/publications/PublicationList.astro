@@ -6,24 +6,27 @@ import type { SanityDocument } from "@sanity/client";
 
 const publications: Array<SanityDocument> =
   await sanityClient.fetch(`*[_type == "publication"]
-{title, tagline, abstract, text, link}`);
+{title, tagline, abstract, text, link, order, publicationCategory->}`);
 ---
 
 <section class="w-full">
   <ol class="max-w-3xl mx-auto flex flex-col gap-4">
     {
-      publications.map((publication: SanityDocument, key: number) => (
-        <li class="mx-4">
-          <Publication
-            title={publication.title}
-            abstract={publication.abstract}
-            tagline={publication.tagline}
-            text={publication.text}
-            link={publication.link}
-            key={key}
-          />
-        </li>
-      ))
+      publications
+        .sort((a, b) => a.order - b.order)
+        .map((publication: SanityDocument, key: number) => (
+          <li class="mx-4">
+            {publication.publicationCategory.title}
+            <Publication
+              title={publication.title}
+              abstract={publication.abstract}
+              tagline={publication.tagline}
+              text={publication.text}
+              link={publication.link}
+              key={key}
+            />
+          </li>
+        ))
     }
   </ol>
 </section>
