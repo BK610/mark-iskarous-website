@@ -1,13 +1,11 @@
 ---
 const { title, tagline, abstract, text, link } = Astro.props;
 
+import Card from "@/components/global/Card.astro";
 import { PortableText } from "astro-portabletext";
 ---
 
-<div
-  id={encodeURIComponent(title)}
-  class="p-4 flex flex-col gap-2 border border-neutral-400 bg-neutral-50 rounded-md hover:bg-neutral-100 hover:border-neutral-800 cursor-pointer toggle-btn"
->
+<Card id={encodeURIComponent(title)} className="toggle-btn p-4">
   <div class="flex flex-col md:flex-row gap-2">
     <h2 class="font-serif font-semibold text-xl">{title}</h2>
     <div class="min-w-fit h-fit md:place-self-center">
@@ -23,7 +21,7 @@ import { PortableText } from "astro-portabletext";
     </div>
   </div>
   <div>{tagline}</div>
-  <span class="w-fit mx-auto text-neutral-600"> ⬇︎ </span>
+  <span class="w-fit mx-auto text-neutral-600 pt-2"> ⬇︎ </span>
   <div class="collapsible-content collapsed flex flex-col gap-2">
     <h3 class="text-lg font-semibold">Summary</h3>
     <PortableText value={abstract} />
@@ -32,7 +30,7 @@ import { PortableText } from "astro-portabletext";
       <PortableText value={text} />
     </div>
   </div>
-</div>
+</Card>
 
 <script>
   // Client-side JavaScript to handle the toggle functionality

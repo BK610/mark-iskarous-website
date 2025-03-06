@@ -4,14 +4,15 @@ export const prerender = true;
 const {
   post: { title, slug, tagline },
 } = Astro.props;
+
+import Card from "@/components/global/Card.astro";
 ---
 
-<a
-  class="border border-neutral-400 bg-neutral-100 rounded-md transition hover:scale-[1.01] shadow-md hover:shadow-xl"
-  href={`/teaching/${slug}`}
->
-  <div class="p-2">
-    <h3 class="pt-1 text-xl font-serif font-semibold">{title}</h3>
-    <p class="pt-2">{tagline}</p>
-  </div>
-</a>
+<Card>
+  <a class="rounded-md" href={`/teaching/${slug}`}>
+    <div class="p-2">
+      <h3 class="pt-1 text-xl font-serif font-semibold">{title}</h3>
+      <p class="pt-2">{tagline}</p>
+    </div>
+  </a>
+</Card>

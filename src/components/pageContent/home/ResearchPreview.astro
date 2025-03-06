@@ -1,19 +1,18 @@
 ---
 const { title, description, image } = Astro.props;
+
+import Card from "@/components/global/Card.astro";
 ---
 
-<div
-  class="border border-neutral-900 bg-stone-50 rounded-md group transition shadow-md hover:shadow-xl"
->
-  <a
-    class="divide-y divide-neutral-900"
-    href={`/research#${title.toLowerCase()}`}
-  >
-    <div class="p-2">
+<Card className="group overflow-hidden">
+  <a href={`/research#${title.toLowerCase()}`}>
+    <div
+      class="p-2 border-b border-b-neutral-400 group-hover:border-b-neutral-800 transition-colors"
+    >
       <h3 class="text-xl font-serif font-semibold">{title}</h3>
       <p class="leading-snug">{description}</p>
     </div>
-    <div class="">
+    <div>
       <img
         class="object-cover w-full grayscale group-hover:grayscale-0"
         src={image}
@@ -23,4 +22,4 @@ const { title, description, image } = Astro.props;
       />
     </div>
   </a>
-</div>
+</Card>
