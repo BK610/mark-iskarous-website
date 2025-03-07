@@ -5,7 +5,7 @@ import Card from "@/components/global/Card.astro";
 import { PortableText } from "astro-portabletext";
 ---
 
-<Card id={encodeURIComponent(title)} className="toggle-btn p-4">
+<Card id={encodeURIComponent(title)} className="toggle-btn p-4" clickable>
   <div class="flex flex-col md:flex-row gap-2">
     <h2 class="font-serif font-semibold text-xl">{title}</h2>
     <div class="min-w-fit h-fit md:place-self-center">

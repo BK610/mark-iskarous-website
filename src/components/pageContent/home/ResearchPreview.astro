@@ -4,7 +4,7 @@ const { title, description, image } = Astro.props;
 import Card from "@/components/global/Card.astro";
 ---
 
-<Card className="group overflow-hidden">
+<Card className="group overflow-hidden" clickable>
   <a href={`/research#${title.toLowerCase()}`}>
     <div
       class="p-2 border-b border-b-neutral-400 group-hover:border-b-neutral-800 transition-colors"
