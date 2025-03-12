@@ -19,7 +19,10 @@ import type { SanityDocument } from "@sanity/client";
               .sort((a: SanityDocument, b: SanityDocument) => a.order - b.order)
               .map((publication: SanityDocument, key: number) => (
                 <li class="list-item list-none text-sm">
-                  <a class="hover:underline" href="/publications">
+                  <a
+                    class="hover:underline"
+                    href={"/publications#" + publication._id}
+                  >
                     <PortableText value={publication.text} />
                   </a>
                 </li>
