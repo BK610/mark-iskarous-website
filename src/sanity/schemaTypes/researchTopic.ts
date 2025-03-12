@@ -28,5 +28,12 @@ export const researchTopicType = defineType({
       name: "image",
       type: "image",
     }),
+    defineField({
+      title: "Publications",
+      name: "publications",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "publication" }] }],
+      description: "Related publications.",
+    }),
   ],
 });

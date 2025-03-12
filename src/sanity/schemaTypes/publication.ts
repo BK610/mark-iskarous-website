@@ -45,5 +45,12 @@ export const publicationType = defineType({
       to: [{ type: "publicationCategory" }],
       title: "Publication Category",
     }),
+    defineField({
+      name: "researchTopics",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "researchTopic" }] }],
+      title: "Research Topics",
+      description: "Related research topics.",
+    }),
   ],
 });
