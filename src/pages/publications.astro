@@ -11,3 +11,19 @@ import PublicationCategoryList from "@/components/pageContent/publications/Publi
   <PageHeader>Publications</PageHeader>
   <PublicationCategoryList />
 </Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Check if there's a hash in the URL
+    const hash = window.location.hash;
+
+    if (hash) {
+      // Wait for the publications to be loaded
+      const targetElement = document.querySelector(hash);
+      if (targetElement) {
+        // Scroll to the element with the matching ID
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
+</script>
