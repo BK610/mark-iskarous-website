@@ -7,7 +7,7 @@ import type { SanityDocument } from "@sanity/client";
 const researchTopics: Array<SanityDocument> = await sanityClient.fetch(
   `*[_type == "researchTopic"] |
   order(_createdAt asc)
-  {title, longDescription, publications[]->{text, order}}`
+  {title, longDescription, publications[]->{_id, title, text, order}}`
 );
 ---
 
@@ -18,6 +18,7 @@ const researchTopics: Array<SanityDocument> = await sanityClient.fetch(
         title={researchTopic.title}
         longDescription={researchTopic.longDescription}
         publications={researchTopic.publications}
+        key={key}
       />
     ))
   }
