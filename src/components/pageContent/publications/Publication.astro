@@ -6,17 +6,17 @@ import { PortableText } from "astro-portabletext";
 ---
 
 <Card id={encodeURIComponent(title)} className="toggle-btn p-4" clickable>
-  <div class="flex flex-col md:flex-row gap-2">
+  <div class="flex flex-col md:flex-row gap-2 pb-4 md:pb-0">
     <h2 class="font-serif font-semibold text-xl">{title}</h2>
     <div class="min-w-fit h-fit md:place-self-center">
       <a
-        class="w-fit px-2 py-2 mb-2 rounded-md
+        class="w-full md:w-fit inline-block md:inline px-2 py-2 mb-2 rounded-md text-center
         text-neutral-50
         bg-neutral-800 hover:bg-neutral-600"
         href={link}
         target="_blank"
       >
-        <b>View →</b>
+        <b class="">View →</b>
       </a>
     </div>
   </div>
