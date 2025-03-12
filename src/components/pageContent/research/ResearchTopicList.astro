@@ -3,15 +3,11 @@ import ResearchTopic from "@/components/pageContent/research/ResearchTopic.astro
 
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-
-const builder = imageUrlBuilder(sanityClient);
-const urlFor = (source: string) => builder.image(source);
 
 const researchTopics: Array<SanityDocument> = await sanityClient.fetch(
   `*[_type == "researchTopic"] |
   order(_createdAt asc)
-  {title, shortDescription, longDescription, image}`
+  {title, longDescription, publications[]->{text, order}}`
 );
 ---
 
@@ -20,9 +16,8 @@ const researchTopics: Array<SanityDocument> = await sanityClient.fetch(
     researchTopics.map((researchTopic: SanityDocument, key: number) => (
       <ResearchTopic
         title={researchTopic.title}
-        shortDescription={researchTopic.shortDescription}
         longDescription={researchTopic.longDescription}
-        image={urlFor(researchTopic.image).url()}
+        publications={researchTopic.publications}
       />
     ))
   }
