@@ -1,12 +1,14 @@
 ---
-const { title, tagline, abstract, text, link } = Astro.props;
+export const prerender = true;
+
+const { id, title, tagline, abstract, text, link } = Astro.props;
 
 import Card from "@/components/global/Card.astro";
 import { PortableText } from "astro-portabletext";
 ---
 
-<Card id={encodeURIComponent(title)} className="toggle-btn p-4" clickable>
-  <div class="flex flex-col md:flex-row gap-2 pb-4 md:pb-0">
+<Card className="toggle-btn p-4" clickable>
+  <div id={id} class="flex flex-col md:flex-row gap-2 pb-4 md:pb-0">
     <h2 class="font-serif font-semibold text-xl">{title}</h2>
     <div class="min-w-fit h-fit md:place-self-center">
       <a
@@ -16,7 +18,7 @@ import { PortableText } from "astro-portabletext";
         href={link}
         target="_blank"
       >
-        <b class="">View →</b>
+        <b>View →</b>
       </a>
     </div>
   </div>
