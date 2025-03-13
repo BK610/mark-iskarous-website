@@ -13,7 +13,7 @@ import type { SanityDocument } from "@sanity/client";
     {
       publications ? (
         <div class="divide-y-2">
-          <h4 class="font-semibold pt-4 text-sm">Relevant publications</h4>
+          <h4 class="font-semibold pt-4 text-sm">Related publications</h4>
           <ul class="list-decimal list-inside space-y-2">
             {publications
               .sort((a: SanityDocument, b: SanityDocument) => a.order - b.order)
