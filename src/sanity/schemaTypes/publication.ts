@@ -11,7 +11,8 @@ export const publicationType = defineType({
     }),
     defineField({
       name: "tagline",
-      type: "string",
+      type: "array",
+      of: [{ type: "block" }],
       title: "Tagline",
     }),
     defineField({
