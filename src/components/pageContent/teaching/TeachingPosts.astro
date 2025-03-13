@@ -8,6 +8,7 @@ import type { Key } from "react";
 import { sanityClient } from "sanity:client";
 
 const posts = await sanityClient.fetch(`*[_type == "teachingPost"]
+order(_createdAt asc)
 {title, "slug": slug.current, tagline}`);
 ---
 
