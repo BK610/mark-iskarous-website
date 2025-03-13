@@ -10,17 +10,21 @@ import { PortableText } from "astro-portabletext";
 <Card className="toggle-btn p-4" clickable>
   <div id={id} class="flex flex-col md:flex-row gap-2 pb-4 md:pb-0">
     <h2 class="font-serif font-semibold text-xl">{title}</h2>
-    <div class="min-w-fit h-fit md:place-self-center">
-      <a
-        class="w-full md:w-fit inline-block md:inline px-2 py-2 mb-2 rounded-md text-center
+    {
+      link ? (
+        <div class="min-w-fit h-fit md:place-self-center">
+          <a
+            class="w-full md:w-fit inline-block md:inline px-2 py-2 mb-2 rounded-md text-center
         text-neutral-50
         bg-neutral-800 hover:bg-neutral-600"
-        href={link}
-        target="_blank"
-      >
-        <b>View →</b>
-      </a>
-    </div>
+            href={link}
+            target="_blank"
+          >
+            <b>View →</b>
+          </a>
+        </div>
+      ) : null
+    }
   </div>
   <div>{tagline}</div>
   <span class="w-fit mx-auto text-neutral-600 pt-2"> ⬇︎ </span>
