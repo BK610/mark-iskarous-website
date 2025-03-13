@@ -18,7 +18,7 @@ const publicationCategories: Array<SanityDocument> =
         .sort((a: SanityDocument, b: SanityDocument) => b.order - a.order)
         .map((publicationCategory: SanityDocument, key: number) => (
           <li class="mx-4">
-            <h3 class="text-xl font-semibold">{publicationCategory.title}</h3>
+            <h3 class="text-2xl font-semibold">{publicationCategory.title}</h3>
             <p class="pb-2">{publicationCategory.description}</p>
             <PublicationList category={publicationCategory._id} key={key} />
           </li>
