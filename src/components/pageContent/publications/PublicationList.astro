@@ -33,7 +33,7 @@ const publications = category ? queryResults.publications : queryResults;
   <ol class="max-w-3xl mx-auto flex flex-col gap-4">
     {
       publications
-        .sort((a: SanityDocument, b: SanityDocument) => a.order - b.order)
+        .sort((a: SanityDocument, b: SanityDocument) => b.order - a.order)
         .map((publication: SanityDocument, key: number) => (
           <li>
             <Publication

@@ -15,7 +15,7 @@ const publicationCategories: Array<SanityDocument> =
   <ol class="max-w-3xl mx-auto flex flex-col gap-4">
     {
       publicationCategories
-        .sort((a, b) => a.order - b.order)
+        .sort((a: SanityDocument, b: SanityDocument) => b.order - a.order)
         .map((publicationCategory: SanityDocument, key: number) => (
           <li class="mx-4">
             <h3 class="text-xl font-semibold">{publicationCategory.title}</h3>
