@@ -37,7 +37,7 @@ export const publicationType = defineType({
       type: "number",
       title: "Order",
       description:
-        "The order of this publication, within a category. Lower numbers appear first.",
+        "The order of this publication, within a category. Higher numbers appear first.",
     }),
     defineField({
       name: "publicationCategory",
