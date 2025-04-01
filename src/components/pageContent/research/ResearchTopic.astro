@@ -12,31 +12,37 @@ import type { SanityDocument } from "@sanity/client";
       <div>
         <h3 class="text-xl font-semibold font-serif pt-2">{title}</h3>
         <p>{longDescription}</p>
-        awef
       </div>
-      {
-        publications ? (
-          <div class="divide-y-2">
-            <h4 class="font-semibold pt-4 text-sm">Related publications</h4>
-            <ul class="list-decimal list-inside space-y-2">
-              {publications
-                .sort(
-                  (a: SanityDocument, b: SanityDocument) => b.order - a.order,
-                )
-                .map((publication: SanityDocument, key: number) => (
-                  <li class="list-item list-none text-sm">
-                    <a
-                      class="hover:underline"
-                      href={"/publications#" + publication._id}
-                    >
-                      <PortableText value={publication.text} />
-                    </a>
-                  </li>
-                ))}
-            </ul>
-          </div>
-        ) : null
-      }
+      <div>
+        <div class="h-[300px] w-full bg-neutral-300">
+          <p class="text-center w-full font-semibold font-mono">
+            IMAGE / VIDEO PLACEHOLDER
+          </p>
+        </div>
+        {
+          publications ? (
+            <div class="divide-y-2">
+              <h4 class="font-semibold pt-4 text-sm">Related publications</h4>
+              <ul class="list-decimal list-inside space-y-2">
+                {publications
+                  .sort(
+                    (a: SanityDocument, b: SanityDocument) => b.order - a.order,
+                  )
+                  .map((publication: SanityDocument, key: number) => (
+                    <li class="list-item list-none text-sm">
+                      <a
+                        class="hover:underline"
+                        href={"/publications#" + publication._id}
+                      >
+                        <PortableText value={publication.text} />
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ) : null
+        }
+      </div>
     </div>
   </Card>
 </div>
