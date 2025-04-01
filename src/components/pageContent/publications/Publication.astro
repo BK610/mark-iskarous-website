@@ -54,12 +54,13 @@ import { PortableText } from "astro-portabletext";
 
 <style>
   .collapsible-content {
-    max-height: fit-content;
+    interpolate-size: allow-keywords;
+    height: auto;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
+    transition: height 0.2s ease-in-out;
   }
 
   .collapsible-content.collapsed {
-    max-height: 0; /* Adjust this value based on your content's maximum height */
+    height: 0px; /* Adjust this value based on your content's maximum height */
   }
 </style>
