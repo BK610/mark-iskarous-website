@@ -8,7 +8,7 @@ import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 
 const socialMediaLinks: Array<SanityDocument> = await sanityClient.fetch(
-  `*[_type == "socialLink"] | order(rank asc)`
+  `*[_type == "socialLink"] | order(rank asc)`,
 );
 ---
 

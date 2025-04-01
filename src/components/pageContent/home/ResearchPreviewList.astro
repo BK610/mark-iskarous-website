@@ -14,7 +14,7 @@ const firstThreeResearchTopics: Array<SanityDocument> =
     `*[_type == "researchTopic"] |
   order(_createdAt asc)
   [0..2]
-  {title, shortDescription, image}`
+  {title, shortDescription, image}`,
   );
 ---
 
@@ -32,7 +32,7 @@ const firstThreeResearchTopics: Array<SanityDocument> =
               image={urlFor(researchTopic.image).height(200).width(300).url()}
             />
           </li>
-        )
+        ),
       )
     }
   </ul>

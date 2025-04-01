@@ -15,7 +15,7 @@ const urlFor = (source: string) => builder.image(source);
 
 const homePageContent: SanityDocument = await sanityClient.fetch(
   `*[_type == "homePage"][0]
-  {about, headshot, researchSubtitle}`
+  {about, headshot, researchSubtitle}`,
 );
 ---
 

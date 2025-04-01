@@ -11,7 +11,7 @@ import type { SanityDocument } from "@sanity/client";
 
 const researchPageContent: SanityDocument = await sanityClient.fetch(
   `*[_type == "researchPage"][0]
-  {heroTitle, heroContent}`
+  {heroTitle, heroContent}`,
 );
 ---
 

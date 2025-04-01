@@ -11,7 +11,7 @@ import { sanityClient } from "sanity:client";
 
 const teachingPageContent = await sanityClient.fetch(
   `*[_type == "teachingPage"][0]
-  {philosophyHeroTitle, philosophyHeroContent, teachingExperienceContent}`
+  {philosophyHeroTitle, philosophyHeroContent, teachingExperienceContent}`,
 );
 ---
 

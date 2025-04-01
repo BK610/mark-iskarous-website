@@ -20,7 +20,7 @@ const query = category
 const queryResults: SanityDocument = await sanityClient.fetch(
   query,
   // If category is provided, pass it as a param to the GROQ query
-  category ? { category } : {}
+  category ? { category } : {},
 );
 
 // Because the query results are structured differently depending on if a
