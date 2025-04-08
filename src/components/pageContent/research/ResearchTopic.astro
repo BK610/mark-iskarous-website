@@ -1,5 +1,5 @@
 ---
-const { title, longDescription, publications } = Astro.props;
+const { title, longDescription, image, publications } = Astro.props;
 
 import Card from "@/components/global/Card.astro";
 import { PortableText } from "astro-portabletext";
@@ -7,18 +7,16 @@ import type { SanityDocument } from "@sanity/client";
 ---
 
 <div>
-  <Card id={encodeURIComponent(title)} className="py-4 px-6">
+  <Card id={encodeURIComponent(title)} className="p-2 md:py-4 md:px-6">
     <div class="grid md:grid-cols-2 gap-4">
       <div>
         <h3 class="text-xl font-semibold font-serif pt-2">{title}</h3>
         <p class="text-sm md:text-base text-justify">{longDescription}</p>
       </div>
       <div>
-        <div class="h-[300px] w-full bg-neutral-300">
-          <p class="text-center w-full font-semibold font-mono">
-            IMAGE / VIDEO PLACEHOLDER
-          </p>
-        </div>
+        <Card class="aspect-[3/2] w-full">
+          <img src={image} class="rounded-md" />
+        </Card>
         {
           publications ? (
             <div class="divide-y-2">
