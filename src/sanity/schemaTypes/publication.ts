@@ -39,6 +39,11 @@ export const publicationType = defineType({
       title: "Link",
     }),
     defineField({
+      name: "file",
+      type: "file",
+      title: "File",
+    }),
+    defineField({
       name: "order",
       type: "number",
       title: "Order",
