@@ -27,6 +27,8 @@ export const researchTopicType = defineType({
       title: "Image",
       name: "image",
       type: "image",
+      description:
+        "Image to display on the homepage (if featured) and the research topic page. Aim for a 3:2 width:height ratio.",
     }),
     defineField({
       name: "featured",
