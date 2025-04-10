@@ -10,13 +10,15 @@ import { PortableText } from "astro-portabletext";
 <Card className="toggle-btn p-4" clickable>
   <div id={id} class="flex flex-col md:flex-row gap-2 pb-4 md:pb-2">
     <h2 class="w-full font-serif font-semibold text-xl">{title}</h2>
-    <div class="grow flex flex-row gap-2 md:place-self-center">
+    <div
+      class="grow flex flex-row md:flex-col gap-2 md:gap-1 md:place-self-center"
+    >
       {
         link ? (
           <a
-            class="grow px-2 py-2 rounded-md text-center text-sm text-nowrap
+            class="w-1/2 md:w-auto grow px-2 py-2 rounded-md text-center text-sm text-nowrap
         text-neutral-50
-        bg-neutral-800 hover:bg-neutral-600"
+        border border-neutral-800 bg-neutral-800 hover:bg-neutral-600 hover:shadow-md"
             href={link}
             target="_blank"
           >
@@ -27,8 +29,8 @@ import { PortableText } from "astro-portabletext";
       {
         file ? (
           <a
-            class="grow px-2 py-2 rounded-md text-center text-sm text-nowrap
-        border border-neutral-800 hover:bg-neutral-100"
+            class="w-1/2 md:w-auto grow px-2 py-2 rounded-md text-center text-sm text-nowrap
+        border border-neutral-800 hover:bg-neutral-100 hover:shadow-md"
             href={`${file}?dl=`}
             download
           >
