@@ -29,6 +29,12 @@ export const researchTopicType = defineType({
       type: "image",
     }),
     defineField({
+      name: "featured",
+      type: "boolean",
+      title: "Featured",
+      description: "Select to display this research topic on the homepage.",
+    }),
+    defineField({
       name: "order",
       type: "number",
       title: "Order",
