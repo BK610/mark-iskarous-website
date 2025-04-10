@@ -29,6 +29,13 @@ export const researchTopicType = defineType({
       type: "image",
     }),
     defineField({
+      name: "order",
+      type: "number",
+      title: "Order",
+      description:
+        "The order of this research topic. Higher numbers appear first.",
+    }),
+    defineField({
       title: "Publications",
       name: "publications",
       type: "array",
