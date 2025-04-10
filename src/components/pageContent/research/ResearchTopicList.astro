@@ -11,8 +11,8 @@ const urlFor = (source: string) => builder.image(source);
 
 const researchTopics: Array<SanityDocument> = await sanityClient.fetch(
   `*[_type == "researchTopic"] |
-  order(_createdAt asc)
-  {title, longDescription, image, publications[]->{_id, title, text, order}}`,
+  order(order desc)
+  {title, longDescription, image, publications[]->{_id, title, text}}`,
 );
 ---
 
