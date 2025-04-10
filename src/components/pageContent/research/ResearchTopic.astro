@@ -22,11 +22,8 @@ import type { SanityDocument } from "@sanity/client";
             <div class="divide-y-2">
               <h4 class="font-semibold pt-4 text-sm">Related publications</h4>
               <ul class="list-decimal list-inside space-y-2">
-                {publications
-                  .sort(
-                    (a: SanityDocument, b: SanityDocument) => b.order - a.order,
-                  )
-                  .map((publication: SanityDocument, key: number) => (
+                {publications.map(
+                  (publication: SanityDocument, key: number) => (
                     <li class="list-item list-none text-sm">
                       <a
                         class="hover:underline"
@@ -35,7 +32,8 @@ import type { SanityDocument } from "@sanity/client";
                         <PortableText value={publication.text} />
                       </a>
                     </li>
-                  ))}
+                  ),
+                )}
               </ul>
             </div>
           ) : null
