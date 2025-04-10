@@ -8,22 +8,20 @@ import imageUrlBuilder from "@sanity/image-url";
 const builder = imageUrlBuilder(sanityClient);
 const urlFor = (source: string) => builder.image(source);
 
-// Fetch only the first three research topics, ordered by creation date
-const firstThreeResearchTopics: Array<SanityDocument> =
-  await sanityClient.fetch(
-    `*[_type == "researchTopic"] |
-  order(_createdAt asc)
-  [0..2]
-  {title, shortDescription, image}`,
-  );
+// Display the research topics that are featured in Sanity
+const featuredResearchTopics: Array<SanityDocument> = await sanityClient.fetch(
+  `*[_type == "researchTopic" && featured ]
+  {title, shortDescription, image, order}`,
+);
 ---
 
 <div class="pt-4 sm:pt-14 w-full">
   <h2 class="mb-2 text-2xl font-display font-semibold">Research</h2>
   <ul class="list-none grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-2">
     {
-      firstThreeResearchTopics.map(
-        (researchTopic: SanityDocument, key: number) => (
+      featuredResearchTopics
+        .sort((a: SanityDocument, b: SanityDocument) => b.order - a.order)
+        .map((researchTopic: SanityDocument, key: number) => (
           <li>
             <ResearchPreview
               key={key}
@@ -32,8 +30,7 @@ const firstThreeResearchTopics: Array<SanityDocument> =
               image={urlFor(researchTopic.image).height(200).width(300).url()}
             />
           </li>
-        ),
-      )
+        ))
     }
   </ul>
 </div>
