@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 
-const { id, title, tagline, abstract, text, link } = Astro.props;
+const { id, title, tagline, abstract, text, link, file } = Astro.props;
 
 import Card from "@/components/global/Card.astro";
 import { PortableText } from "astro-portabletext";
@@ -10,11 +10,11 @@ import { PortableText } from "astro-portabletext";
 <Card className="toggle-btn p-4" clickable>
   <div id={id} class="flex flex-col md:flex-row gap-2 pb-4 md:pb-2">
     <h2 class="w-full font-serif font-semibold text-xl">{title}</h2>
-    {
-      link ? (
-        <div class="min-w-fit h-fit md:place-self-center">
+    <div class="grow flex flex-row gap-2 md:place-self-center">
+      {
+        link ? (
           <a
-            class="w-full md:w-fit inline-block md:inline px-2 py-2 mb-2 rounded-md text-center
+            class="grow px-2 py-2 rounded-md text-center text-sm text-nowrap
         text-neutral-50
         bg-neutral-800 hover:bg-neutral-600"
             href={link}
@@ -22,9 +22,21 @@ import { PortableText } from "astro-portabletext";
           >
             <b>Website →</b>
           </a>
-        </div>
-      ) : null
-    }
+        ) : null
+      }
+      {
+        file ? (
+          <a
+            class="grow px-2 py-2 rounded-md text-center text-sm text-nowrap
+        border border-neutral-800 hover:bg-neutral-100"
+            href={`${file}?dl=`}
+            download
+          >
+            <b>Paper →</b>
+          </a>
+        ) : null
+      }
+    </div>
   </div>
   <div class="text-sm">{tagline}</div>
   <span class="w-fit mx-auto text-neutral-600 pt-2"> ⬇︎ </span>
