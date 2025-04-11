@@ -10,11 +10,13 @@ import Card from "@/components/global/Card.astro";
       class="p-2 border-b border-b-neutral-400 group-hover:border-b-neutral-800 transition-colors"
     >
       <h3
-        class="h-[3em] text-xl font-serif font-semibold line-clamp-2 leading-normal"
+        class="h-[3em] text-xl font-serif font-semibold line-clamp-2 leading-normal text-center"
       >
         {title}
       </h3>
-      <p class="h-[8.25em] leading-snug line-clamp-6">{description}</p>
+      <p class="h-[8.25em] leading-snug line-clamp-6 text-justify">
+        {description}
+      </p>
     </div>
     <div>
       <img
