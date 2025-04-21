@@ -1,9 +1,24 @@
 ---
-const { title, longDescription, featuredImage, id, publications } = Astro.props;
+const { title, longDescription, imagesAndVideos, id, publications } =
+  Astro.props;
 
 import Card from "@/components/global/Card.astro";
 import { PortableText } from "astro-portabletext";
 import type { SanityDocument } from "@sanity/client";
+import MediaCarousel from "@/components/global/MediaCarousel";
+
+import { sanityClient } from "sanity:client";
+import imageUrlBuilder from "@sanity/image-url";
+
+const builder = imageUrlBuilder(sanityClient);
+const urlFor = (source: string) => builder.image(source);
+
+// Transform the imagesAndVideos data to match the MediaCarousel interface
+const mediaItems = imagesAndVideos?.map((item: any) => ({
+  _type: item._type,
+  image: item._type === "researchImage" ? urlFor(item.image).url() : undefined,
+  youtubeUrl: item._type === "youtubeVideo" ? item.youtubeUrl : undefined,
+}));
 ---
 
 <Card id={encodeURIComponent(id)} className="p-2 md:py-4 md:px-6">
@@ -13,9 +28,13 @@ import type { SanityDocument } from "@sanity/client";
       <p class="text-sm md:text-base text-justify">{longDescription}</p>
     </div>
     <div>
-      <Card class="aspect-[3/2] w-full">
-        <img src={featuredImage} class="rounded-md" />
-      </Card>
+      {
+        mediaItems && mediaItems.length > 0 && (
+          <Card class="aspect-[3/2] w-full h-full">
+            <MediaCarousel client:load items={mediaItems} />
+          </Card>
+        )
+      }
       {
         publications ? (
           <div class="divide-y-2">
