@@ -1,11 +1,11 @@
 ---
-const { title, description, image } = Astro.props;
+const { title, description, image, id } = Astro.props;
 
 import Card from "@/components/global/Card.astro";
 ---
 
-<Card className="group overflow-hidden" clickable>
-  <a href={`/research#${title.toLowerCase()}`}>
+<Card className="group overflow-hidden" clickable id={encodeURIComponent(id)}>
+  <a href={`/research#${encodeURIComponent(id)}`}>
     <div
       class="p-2 border-b border-b-neutral-400 group-hover:border-b-neutral-800 transition-colors"
     >
@@ -24,7 +24,7 @@ import Card from "@/components/global/Card.astro";
         src={image}
         height="200"
         width="300"
-        alt={`Header for the ${title} research topic`}
+        alt={`Representative image for the ${title} research topic`}
       />
     </div>
   </a>
