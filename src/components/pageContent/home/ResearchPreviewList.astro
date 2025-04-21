@@ -11,7 +11,7 @@ const urlFor = (source: string) => builder.image(source);
 // Display the research topics that are featured in Sanity
 const featuredResearchTopics: Array<SanityDocument> = await sanityClient.fetch(
   `*[_type == "researchTopic" && featured ]
-  {title, shortDescription, image, order}`,
+  {title, shortDescription, image, order, _id}`,
 );
 ---
 
@@ -25,6 +25,7 @@ const featuredResearchTopics: Array<SanityDocument> = await sanityClient.fetch(
           <li>
             <ResearchPreview
               key={key}
+              id={researchTopic._id}
               title={researchTopic.title}
               description={researchTopic.shortDescription}
               image={urlFor(researchTopic.image).height(200).width(300).url()}
