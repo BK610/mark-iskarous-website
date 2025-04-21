@@ -12,7 +12,7 @@ const urlFor = (source: string) => builder.image(source);
 const researchTopics: Array<SanityDocument> = await sanityClient.fetch(
   `*[_type == "researchTopic"] |
   order(order desc)
-  {title, longDescription, image, imagesAndVideos, _id, publications[]->{_id, title, text}}`,
+  {title, longDescription, imagesAndVideos, _id, publications[]->{_id, title, text}}`,
 );
 ---
 
@@ -22,7 +22,6 @@ const researchTopics: Array<SanityDocument> = await sanityClient.fetch(
       <ResearchTopic
         title={researchTopic.title}
         longDescription={researchTopic.longDescription}
-        featuredImage={urlFor(researchTopic.image).url()}
         imagesAndVideos={researchTopic.imagesAndVideos}
         publications={researchTopic.publications}
         id={researchTopic._id}
