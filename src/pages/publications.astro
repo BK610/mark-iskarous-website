@@ -21,8 +21,11 @@ import PublicationCategoryList from "@/components/pageContent/publications/Publi
       // Wait for the publications to be loaded
       const targetElement = document.querySelector(hash);
       if (targetElement) {
-        // Scroll to the element with the matching ID
-        targetElement.scrollIntoView({ behavior: "smooth" });
+        // Scroll to the element with smooth behavior and center alignment
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }
     }
   });
