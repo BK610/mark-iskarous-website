@@ -1,5 +1,5 @@
 ---
-const { className, clickable = false, tabIndex = 0 } = Astro.props;
+const { className, clickable = false, id = "", tabIndex = 0 } = Astro.props;
 ---
 
 <div
@@ -10,6 +10,8 @@ const { className, clickable = false, tabIndex = 0 } = Astro.props;
 hover:bg-neutral-50 hover:border-neutral-800
 focus:border-neutral-800 focus-within:border-neutral-800
   ${clickable ? "cursor-pointer" : ""}`
+  tabindex={tabIndex}
+  id={id}
 >
   <slot />
 </div>
