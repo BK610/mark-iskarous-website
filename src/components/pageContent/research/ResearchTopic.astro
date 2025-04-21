@@ -1,12 +1,12 @@
 ---
-const { title, longDescription, image, publications } = Astro.props;
+const { title, longDescription, image, id, publications } = Astro.props;
 
 import Card from "@/components/global/Card.astro";
 import { PortableText } from "astro-portabletext";
 import type { SanityDocument } from "@sanity/client";
 ---
 
-<Card id={encodeURIComponent(title)} className="p-2 md:py-4 md:px-6">
+<Card id={encodeURIComponent(id)} className="p-2 md:py-4 md:px-6">
   <div class="grid md:grid-cols-2 gap-4">
     <div>
       <h3 class="text-xl font-semibold font-serif pt-2">{title}</h3>
@@ -25,7 +25,9 @@ import type { SanityDocument } from "@sanity/client";
                 <li class="list-item list-none text-sm">
                   <a
                     class="hover:underline"
-                    href={"/publications#" + publication._id}
+                    href={
+                      "/publications#" + encodeURIComponent(publication._id)
+                    }
                   >
                     <PortableText value={publication.text} />
                   </a>
