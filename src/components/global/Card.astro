@@ -1,12 +1,14 @@
 ---
-const { className, clickable = false } = Astro.props;
+const { className, clickable = false, tabIndex = 0 } = Astro.props;
 ---
 
 <div
   class=`${className}
   flex flex-col
-  border border-neutral-400 bg-neutral-100 rounded-md shadow hover:shadow-lg transition
+  border border-neutral-400 bg-neutral-100 rounded-md transition
+  shadow hover:shadow-lg focus:shadow-lg focus-within:shadow-lg
 hover:bg-neutral-50 hover:border-neutral-800
+focus:border-neutral-800 focus-within:border-neutral-800
   ${clickable ? "cursor-pointer" : ""}`
 >
   <slot />
