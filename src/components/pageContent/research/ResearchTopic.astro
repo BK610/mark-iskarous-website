@@ -1,5 +1,5 @@
 ---
-const { title, longDescription, image, id, publications } = Astro.props;
+const { title, longDescription, featuredImage, id, publications } = Astro.props;
 
 import Card from "@/components/global/Card.astro";
 import { PortableText } from "astro-portabletext";
@@ -14,7 +14,7 @@ import type { SanityDocument } from "@sanity/client";
     </div>
     <div>
       <Card class="aspect-[3/2] w-full">
-        <img src={image} class="rounded-md" />
+        <img src={featuredImage} class="rounded-md" />
       </Card>
       {
         publications ? (
