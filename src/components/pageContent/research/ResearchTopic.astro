@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 const { title, longDescription, imagesAndVideos, id, publications } =
   Astro.props;
 
@@ -27,10 +29,10 @@ const mediaItems = imagesAndVideos?.map((item: any) => ({
       <h3 class="text-xl font-semibold font-serif pt-2">{title}</h3>
       <p class="text-sm md:text-base text-justify">{longDescription}</p>
     </div>
-    <div>
+    <div class="flex flex-col">
       {
         mediaItems && mediaItems.length > 0 && (
-          <Card class="aspect-[3/2] w-full h-full">
+          <Card class="w-full overflow-hidden">
             <MediaCarousel client:load items={mediaItems} />
           </Card>
         )
