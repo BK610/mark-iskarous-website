@@ -31,6 +31,42 @@ export const researchTopicType = defineType({
         "Image to display on the homepage (if featured) and the research topic page. Aim for a 3:2 width:height ratio.",
     }),
     defineField({
+      title: "Images and Videos",
+      name: "imagesAndVideos",
+      type: "array",
+      of: [
+        {
+          title: "Image",
+          type: "object",
+          name: "researchImage",
+          fields: [
+            { title: "Image", type: "image", name: "image" },
+            {
+              title: "Alt text",
+              type: "text",
+              name: "altText",
+              description: "Displayed if there is an issue loading the image.",
+            },
+          ],
+        },
+        {
+          title: "YouTube Video",
+          type: "object",
+          name: "youtubeVideo",
+          fields: [
+            { title: "YouTube URL", type: "url", name: "youtubeUrl" },
+            {
+              title: "Alt text",
+              type: "text",
+              name: "altText",
+              description: "Displayed if there is an issue loading the video.",
+            },
+          ],
+        },
+      ],
+      description: "Images and videos to display for the research topic.",
+    }),
+    defineField({
       name: "featured",
       type: "boolean",
       title: "Featured",
