@@ -7,8 +7,8 @@ import Card from "@/components/global/Card.astro";
 import { PortableText } from "astro-portabletext";
 ---
 
-<Card className="toggle p-4" clickable>
-  <div id={id} class="flex flex-col md:flex-row gap-2 pb-4 md:pb-2">
+<Card className="toggle p-4" clickable id={encodeURIComponent(id)}>
+  <div class="flex flex-col md:flex-row gap-2 pb-4 md:pb-2">
     <h2 class="w-full font-serif font-semibold text-xl">{title}</h2>
     <div
       class="grow flex flex-row md:flex-col gap-2 md:gap-1 md:place-self-center"
@@ -80,6 +80,6 @@ import { PortableText } from "astro-portabletext";
   }
 
   .collapsible-content.collapsed {
-    height: 0px; /* Adjust this value based on your content's maximum height */
+    height: 0px;
   }
 </style>
