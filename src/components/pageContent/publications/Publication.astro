@@ -1,9 +1,10 @@
 ---
 export const prerender = true;
 
-const { id, title, tagline, abstract, link, file } = Astro.props;
+const { id, title, taglineBlock, abstract, link, file } = Astro.props;
 
 import Card from "@/components/global/Card.astro";
+import Prose from "@/components/global/Prose.astro";
 import { PortableText } from "astro-portabletext";
 ---
 
@@ -40,7 +41,9 @@ import { PortableText } from "astro-portabletext";
       }
     </div>
   </div>
-  <div class="text-sm">{tagline}</div>
+  <Prose class="max-w-none text-sm text-black leading-5">
+    <PortableText value={taglineBlock} />
+  </Prose>
   <span class="w-fit mx-auto text-neutral-600 pt-2"> ⬇︎ </span>
   <div class="collapsible-content collapsed flex flex-col gap-2">
     <h3 class="text-lg font-semibold">Abstract</h3>
