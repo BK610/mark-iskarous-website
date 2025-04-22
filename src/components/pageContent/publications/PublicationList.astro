@@ -12,10 +12,10 @@ import type { SanityDocument } from "@sanity/client";
 const query = category
   ? `*[_type == "publicationCategory" && _id == $category][0]
       {"publications": *[_type == "publication" && references(^._id)]
-        {_id, title, tagline, abstract, link, "file": file.asset->url, order}
+        {_id, title, taglineBlock, abstract, link, "file": file.asset->url, order}
       }`
   : `*[_type == "publication"]
-      {_id, title, tagline, abstract, link, "file": file.asset->url, order}`;
+      {_id, title, taglineBlock, abstract, link, "file": file.asset->url, order}`;
 
 const queryResults: SanityDocument = await sanityClient.fetch(
   query,
@@ -40,7 +40,7 @@ const publications = category ? queryResults.publications : queryResults;
               id={publication._id}
               title={publication.title}
               abstract={publication.abstract}
-              tagline={publication.tagline}
+              taglineBlock={publication.taglineBlock}
               link={publication.link}
               file={publication.file}
               key={key}
