@@ -9,16 +9,19 @@ export const publicationType = defineType({
       type: "string",
       title: "Title",
     }),
-    // defineField({
-    //   name: "tagline",
-    //   type: "array",
-    //   of: [{ type: "block" }],
-    //   title: "Tagline",
-    // }),
+    defineField({
+      name: "taglineBlock",
+      type: "array",
+      of: [{ type: "block" }],
+      title: "Tagline",
+    }),
     defineField({
       name: "tagline",
       type: "text",
       title: "Tagline",
+      deprecated: {
+        reason: "Use the formattable Tagline field instead.",
+      },
     }),
     defineField({
       name: "abstract",
