@@ -22,6 +22,7 @@ export const publicationType = defineType({
       deprecated: {
         reason: "Use the formattable Tagline field instead.",
       },
+      readOnly: true,
     }),
     defineField({
       name: "abstract",
