@@ -8,7 +8,7 @@ import Prose from "@/components/global/Prose.astro";
 import { PortableText } from "astro-portabletext";
 ---
 
-<Card className="toggle p-4" clickable id={encodeURIComponent(id)}>
+<Card className="toggle p-4" clickable={abstract}   id={encodeURIComponent(id)}>
   <div class="flex flex-col md:flex-row gap-2 pb-4 md:pb-2">
     <h2 class="w-full font-serif font-semibold text-xl">{title}</h2>
     <div
@@ -44,11 +44,12 @@ import { PortableText } from "astro-portabletext";
   <Prose class="max-w-none text-sm text-black leading-5">
     <PortableText value={taglineBlock} />
   </Prose>
+  {abstract && 
   <span class="w-fit mx-auto text-neutral-600 pt-2"> ⬇︎ </span>
   <div class="collapsible-content collapsed flex flex-col gap-2">
     <h3 class="text-lg font-semibold">Abstract</h3>
     <PortableText value={abstract} />
-  </div>
+  </div>}
 </Card>
 
 <script>
