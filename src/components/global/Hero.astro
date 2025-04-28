@@ -4,6 +4,7 @@ export const prerender = true;
 const { title, content } = Astro.props;
 
 import { PortableText } from "astro-portabletext";
+import Prose from "@/components/global/Prose.astro";
 ---
 
 <div
@@ -13,8 +14,8 @@ import { PortableText } from "astro-portabletext";
     <h2 class="text-4xl font-semibold w-full text-center sm:text-left">
       {title}
     </h2>
-    <div class="leading-snug space-y-2 text-justify">
+    <Prose class="max-w-none">
       <PortableText value={content} />
-    </div>
+    </Prose>
   </div>
 </div>
