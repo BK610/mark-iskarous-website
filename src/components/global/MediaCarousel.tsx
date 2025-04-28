@@ -41,10 +41,12 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
                 </div>
               )}
               {item._type === "youtubeVideo" && item.youtubeUrl && (
-                <div className="w-full h-full">
+                <div className="w-full h-full flex">
                   <iframe
                     src={item.youtubeUrl}
-                    className="w-full h-full rounded-md"
+                    // Set max height to 90% to leave space for the pagination,
+                    //   so it doesn't overlap with the YouTube controls.
+                    className="w-full h-full max-h-[90%] rounded-md"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
