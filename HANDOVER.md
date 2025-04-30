@@ -82,9 +82,38 @@ src/
    - Global styles can be added in `src/styles`
 
 4. **Content Management**
+
    - Content is managed through Sanity.io
    - The schema definitions are in `src/sanity`
    - Use the Sanity Studio interface for content updates
+
+5. **Adding Navigation Items**
+
+   To add a new item to the navigation bar:
+
+   1. Open `src/components/global/NavBar.astro`
+   2. Add a new `NavBarItem` component in the navigation links section:
+      ```astro
+      <div
+        class="flex md:justify-end flex-col md:flex-row items-center gap-4 mt-4 md:mt-0 fixed md:relative inset-x-0 top-16 md:top-0 bg-neutral-100 md:bg-transparent z-50 py-4 md:py-0"
+      >
+        <NavBarItem location="/" title="Home" />
+        <NavBarItem location="/research" title="Research" />
+        <NavBarItem location="/teaching" title="Teaching" />
+        <NavBarItem location="/publications" title="Publications" />
+        <NavBarItem location={`${cv.fileUrl}`} title="CV" target="_blank" />
+        <!-- Add your new navigation item here -->
+        <NavBarItem location="/your-new-page" title="New Page" />
+      </div>
+      ```
+
+   The `NavBarItem` component takes three props:
+
+   - `location`: The URL path for the navigation item
+   - `title`: The text to display in the navigation bar
+   - `target` (optional): Set to `"_blank"` to open the link in a new tab (used for external links like the CV)
+
+   The navigation bar is responsive and will automatically handle mobile views with a hamburger menu.
 
 ### Deployment
 
