@@ -197,7 +197,7 @@ The project is built on several key infrastructure components that work together
 - Content management interface
 - Automatically generated from the schema types
 - Allows content editors to create and manage content
-- Accessible at `/studio`. Sometimes inaccessible on the development server
+- Accessible at `/admin`. Sometimes inaccessible on the development server
 
 ### 3. Astro Pages and Components
 
@@ -267,7 +267,7 @@ Here's a step-by-step guide for making changes to content types and their repres
    npm run dev
    ```
 
-2. Navigate to `http://localhost:4321/studio`. If this doesn't work, push the content type changes and access Sanity Studio on the production domain
+2. Navigate to `http://localhost:4321/admin`. If this doesn't work, push the content type changes and access Sanity Studio on the production domain
 
 3. Create new content using the Sanity Studio interface
    - The interface will automatically reflect your new schema
