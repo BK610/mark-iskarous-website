@@ -34,7 +34,7 @@ For any questions or issues, please contact [Bailey Kane](https://baileykane.co/
 src/
 ├── components/     # Reusable UI components
 ├── layouts/        # Page layout templates
-├── pages/          # Astro pages/routes
+├── pages/          # Astro pages and routes
 ├── sanity/         # Sanity.io configuration and schemas
 └── styles/         # Global styles and Tailwind configuration
 ```
@@ -46,7 +46,7 @@ src/
 1. **Prerequisites**
 
    - Node.js (latest LTS version recommended)
-   - npm or yarn package manager
+   - `npm` or `yarn` package manager
    - Git
 
 2. **Installation**
@@ -54,8 +54,19 @@ src/
    ```bash
    npm install
    ```
+   Run this command in the project root to install the project dependencies through the chosen package manager. This is only required once.
 
-3. **Development Server**
+3. **Environment Variables**
+
+   Set up your local environment with the required environment variables. These are sensitive pieces of data that components of the project use for things like API access or tool configuration.
+
+   In our case, these are used to configure the Sanity Studio CMS access.
+
+   Create a `.env.local` file in the project root and add the required environment variables for Sanity Studio. If lost, these can be found in your Sanity account.
+
+   *Note: These environment variables are already configured in the Vercel project.*
+
+5. **Development Server**
    ```bash
    npm run dev
    ```
@@ -71,14 +82,13 @@ src/
 2. **Creating Components**
 
    - Reusable components go in `src/components`
-   - Use TypeScript for type safety
    - Follow the existing component structure
    - Components can be made with Astro or a Javascript framework like React
 
 3. **Styling**
 
-   - Use [Tailwind CSS](https://tailwindcss.com/) classes directly in components
-   - Note: Uses **Tailwind V3**
+   - Use [Tailwind CSS](https://v3.tailwindcss.com/) classes directly in components
+   - Note: Uses **Tailwind V3**, so make sure you view the correct documentation to learn more. Or, upgrade to the latest Tailwind version.
    - Global styles can be added in `src/styles`
 
 4. **Content Management**
@@ -114,6 +124,13 @@ src/
    - `target` (optional): Set to `"_blank"` to open the link in a new tab (used for external links like the CV)
 
    The navigation bar is responsive and will automatically handle mobile views with a hamburger menu.
+
+### `npm` commands
+
+There are pre-configured `npm` commands that are used to interact with the code base.
+
+- `npm run dev` - This starts a development server, by default located at `localhost:4321`. This is used to run a local version of the site for development and testing.
+- `npm run build` - This generates a production-ready build of the project. This is what Vercel will run when pushing code to GitHub / Vercel, and can be run locally to ensure the project builds correctly beforehand.
 
 ### Deployment
 
